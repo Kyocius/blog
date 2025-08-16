@@ -19,7 +19,7 @@ theme = "diary"
     tabWidth = 4
 
 [params]
-subtitle = "苏格拉底不会梦见"
+subtitle = "The Mind Port"
 enableGitalk = false
 enableGiscus = true
 

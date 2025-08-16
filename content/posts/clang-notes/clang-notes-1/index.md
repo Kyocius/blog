@@ -4,7 +4,7 @@ date: 2023-08-31
 draft: true
 slug: clang-notes-1
 categories:
-    - 编程
+    - Dev
 tags:
     - Clang 
 image: head.png

@@ -6,10 +6,9 @@ slug: 2024-08-26-pku-btc
 enableLatex: true
 description: 北大肖臻老师的区块链公开课。比特币部分。
 categories:
-    - 编程
+    - Dev
 tags:
-    - 区块链
-featured_image: "bitcoin.jpg"
+    - Blockchain
 ---
 > 不要被学术思维或是程序员思维限制创造力。
 

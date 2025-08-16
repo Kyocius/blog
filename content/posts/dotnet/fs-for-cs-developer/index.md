@@ -1,14 +1,13 @@
 ---
-title: "写给 C# 开发者的 F# 光速入门指南（译）"
+title: "写给 C# 开发者的 F# 光速入门指南"
 date: 2022-08-26
 draft: false
 slug: fsharp-for-csharp-devs
 description: Guide for C# devs to learn F# real FAST
 categories:
-    - 编程
+    - Dev
 tags:
-    - FSharp Basic
-featured_image: head.jpg
+    - FSharp
 
 ---
 

@@ -3,7 +3,7 @@ title: 2023 当我谈论高中时
 description: 只有一刹那的记忆也不错。
 date: 2023-06-19T19:36:00+08:00
 slug: memory-graduation-2023
-categories:  随笔
+categories:  Writing
 #featured_image: head.jpg
 #draft: true
 ---

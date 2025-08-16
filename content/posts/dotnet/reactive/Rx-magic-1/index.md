@@ -5,7 +5,7 @@ description: Rx.NET in Action 笔记
 draft: false
 slug: rx-magic-1
 categories:
-    - 编程
+    - Dev
 tags:
     - Rx.NET Tutorial
     - CSharp

@@ -5,7 +5,7 @@ date: 2022-08-10
 draft: false
 slug: rx-magic-3
 categories:
-    - 编程
+    - Dev
 tags:
     - Rx.NET Tutorial
     - CSharp

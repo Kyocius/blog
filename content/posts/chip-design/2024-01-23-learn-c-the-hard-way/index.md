@@ -5,11 +5,10 @@ draft: false
 slug: clang-review
 description: Partial Answers for Learn C The Hard Way
 categories:
-    - 编程
+    - Dev
 tags:
     - 一生一芯
     - Clang
-featured_image: oldpc.jpg
 ---
 # 前言
 

@@ -5,7 +5,7 @@ draft: true
 slug: 2024-02-02-ddca
 description: Digital Design and Computer Architecture with RISC-V
 categories:
-    - 编程
+    - Dev
 tags:
     - 体系结构
     - 数字电路

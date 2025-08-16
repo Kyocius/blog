@@ -4,7 +4,7 @@ description: 只是一次无病呻吟。
 slug: 2024-08-03-two-sparrow
 date: 2024-08-03T20:36:00+08:00
 # draft: true
-categories: 随笔
+categories: Writing
 ---
 
 走廊尽头，靠近窗户的一隅，是我的房间，
