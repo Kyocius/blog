@@ -3,42 +3,45 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kyocius.github.io/categories/</loc>
-    <lastmod>2025-01-24T14:21:08+08:00</lastmod>
+    <lastmod>2025-08-16T11:47:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kyocius.github.io/categories/dev/</loc>
+    <lastmod>2025-08-16T11:47:00+08:00</lastmod>
   </url><url>
     <loc>https://kyocius.github.io/posts/</loc>
-    <lastmod>2025-01-24T14:21:08+08:00</lastmod>
+    <lastmod>2025-08-16T11:47:00+08:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/posts/casual-writting/2024-wrapping-up/</loc>
-    <lastmod>2025-01-24T14:21:08+08:00</lastmod>
+    <loc>https://kyocius.github.io/posts/2025/2025-08-16-fix-starship/</loc>
+    <lastmod>2025-08-16T11:47:00+08:00</lastmod>
   </url><url>
     <loc>https://kyocius.github.io/</loc>
-    <lastmod>2025-01-24T14:21:08+08:00</lastmod>
+    <lastmod>2025-08-16T11:47:00+08:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/categories/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2025-01-24T14:21:08+08:00</lastmod>
+    <loc>https://kyocius.github.io/categories/writing/</loc>
+    <lastmod>2025-01-24T21:08:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kyocius.github.io/posts/2025/2024-wrapping-up/</loc>
+    <lastmod>2025-01-24T21:08:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kyocius.github.io/tags/blockchain/</loc>
+    <lastmod>2024-08-26T14:19:05+08:00</lastmod>
   </url><url>
     <loc>https://kyocius.github.io/tags/</loc>
     <lastmod>2024-08-26T14:19:05+08:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/</loc>
-    <lastmod>2024-08-26T14:19:05+08:00</lastmod>
-  </url><url>
-    <loc>https://kyocius.github.io/categories/%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2024-08-26T14:19:05+08:00</lastmod>
-  </url><url>
-    <loc>https://kyocius.github.io/posts/pku-blockchain/2024-08-26-pku-btc/</loc>
+    <loc>https://kyocius.github.io/posts/2024/pku-blockchain/2024-08-26-pku-btc/</loc>
     <lastmod>2024-08-26T14:19:05+08:00</lastmod>
   </url><url>
     <loc>https://kyocius.github.io/about/</loc>
     <lastmod>2024-08-14T21:11:31+08:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/posts/casual-writting/2024-08-03-two-sparrow/</loc>
+    <loc>https://kyocius.github.io/posts/2024/2024-08-03-two-sparrow/</loc>
     <lastmod>2024-08-03T20:36:00+08:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/posts/casual-writting/2024-summer-holiday/</loc>
+    <loc>https://kyocius.github.io/posts/2024/2024-summer-holiday/</loc>
     <lastmod>2024-06-25T00:35:00+08:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/posts/casual-writting/2024-04-02-confusion/</loc>
+    <loc>https://kyocius.github.io/posts/2024/2024-04-02-confusion/</loc>
     <lastmod>2024-04-02T14:13:00+08:00</lastmod>
   </url><url>
     <loc>https://kyocius.github.io/tags/clang/</loc>
@@ -47,37 +50,37 @@
     <loc>https://kyocius.github.io/tags/%E4%B8%80%E7%94%9F%E4%B8%80%E8%8A%AF/</loc>
     <lastmod>2024-01-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/posts/chip-design/clang-review/</loc>
+    <loc>https://kyocius.github.io/posts/2024/chip-design/clang-review/</loc>
     <lastmod>2024-01-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/posts/casual-writting/memory-graduation-2023/</loc>
+    <loc>https://kyocius.github.io/posts/2023/memory-graduation-2023/</loc>
     <lastmod>2023-06-19T19:36:00+08:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/tags/fsharp-basic/</loc>
+    <loc>https://kyocius.github.io/tags/fsharp/</loc>
     <lastmod>2022-08-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/posts/dotnet/fsharp-for-csharp-devs/</loc>
+    <loc>https://kyocius.github.io/posts/2023/dotnet/fsharp-for-csharp-devs/</loc>
     <lastmod>2022-08-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://kyocius.github.io/tags/csharp/</loc>
     <lastmod>2022-08-15T12:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/posts/dotnet/advanced-csharp/</loc>
+    <loc>https://kyocius.github.io/posts/2023/dotnet/advanced-csharp/</loc>
     <lastmod>2022-08-15T12:00:00+00:00</lastmod>
   </url><url>
     <loc>https://kyocius.github.io/tags/rx.net-tutorial/</loc>
     <lastmod>2022-08-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/posts/dotnet/reactive/rx-magic-3/</loc>
+    <loc>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-3/</loc>
     <lastmod>2022-08-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/posts/dotnet/reactive/rx-magic-ex/</loc>
+    <loc>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-ex/</loc>
     <lastmod>2022-08-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/posts/dotnet/reactive/rx-magic-2/</loc>
+    <loc>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-2/</loc>
     <lastmod>2022-08-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://kyocius.github.io/posts/dotnet/reactive/rx-magic-1/</loc>
+    <loc>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-1/</loc>
     <lastmod>2022-08-07T00:00:00+00:00</lastmod>
   </url>
 </urlset>

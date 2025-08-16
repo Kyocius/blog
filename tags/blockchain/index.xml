@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blockchain on 游尔港</title>
+    <link>https://kyocius.github.io/tags/blockchain/</link>
+    <description>Recent content in Blockchain on 游尔港</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>Kyocius. 本站遵循 CC-BY-NC 4.0 协议</copyright>
+    <lastBuildDate>Mon, 26 Aug 2024 14:19:05 +0800</lastBuildDate><atom:link href="https://kyocius.github.io/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>潦草 PKU 区块链备忘录</title>
+      <link>https://kyocius.github.io/posts/2024/pku-blockchain/2024-08-26-pku-btc/</link>
+      <pubDate>Mon, 26 Aug 2024 14:19:05 +0800</pubDate>
+      
+      <guid>https://kyocius.github.io/posts/2024/pku-blockchain/2024-08-26-pku-btc/</guid>
+      <description>不要被学术思维或是程序员思维限制创造力。
+密码学基础 哈希函数的三个特点：
+单向性（One-Wayness）：$X \rightarrow H(X)$。 唯一性（Uniqueness）：$X$ 只对应一个 $H(X)$。 抗碰撞性（Collision Resistance）：不存在 $H(X) = H(Y)$。 数据结构 最重要的哈希树（Merkle Tree）结构。
+区块链实现 UTXO（Unspent Transaction Output）：所有没被花掉的交易的输出。全节点要在内存中维护 UTXO，以便快速检验是否存在 Double Spending。
+网络 比特币网络使用 P2P 和 TCP，便于穿透防火墙。 比特币对区块有 1M 字节的限制。 挖矿难度 挖矿原理：$$ Hash(Block \ Header) \leq Target $$
+比特币采用 SHA-256 算法，也就是说目标值有 $2^{256}$ 个取值。
+挖矿难度：$$ Difficulty = \frac{Difficulty^{=1} \ Target}{Target} $$
+限制出块时间。出块时间太短：容易改链。
+比特币规定每隔 2016 个区块要调整阈值。目标阈值迭代更新方法：
+$$ Target=Target \times \frac{Actual \ Time}{Expected \ Time} $$
+$$ Expected \ Time = 2016 \times 10 \ min/block $$</description>
+    </item>
+    
+  </channel>
+</rss>

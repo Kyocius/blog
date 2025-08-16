@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html><head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@100..900&family=Noto+Sans:wght@100..900&family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@400;700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<title>Rx.NET 响应式编程指北 03 - 深入流的创建</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="Rx.NET in Action 笔记">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="Rx.NET 响应式编程指北 03 - 深入流的创建" />
+<meta property="og:description" content="Rx.NET in Action 笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-08-10T00:00:00+00:00" /><meta property="og:site_name" content="kyocius" />
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Rx.NET 响应式编程指北 03 - 深入流的创建"/>
+<meta name="twitter:description" content="Rx.NET in Action 笔记"/>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "abcdefghzd");
+</script>
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.abf4689cc3c0e61ec4ab8b56603ce074815f8cc9d679a25967aa4a7e60dd6f02.css" integrity="sha256-q/RonMPA5h7Eq4tWYDzgdIFfjMnWeaJZZ6pKfmDdbwI=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    歸檔 Archive
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分類 Categories
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    標簽 Tags
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about/">
+                    關於 About
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    訂閱 RSS
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目錄 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" class="nav-前言">
+									前言
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%99%ae%e9%80%9a%e6%95%b0%e6%8d%ae%e6%b5%81" class="nav-普通数据流">
+									普通数据流
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%ae%9e%e7%8e%b0-iobservable-%e6%8e%a5%e5%8f%a3" class="nav-实现-iobservable-接口">
+									实现 IObservable 接口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%9e%e7%8e%b0-observer-%e6%8e%a5%e5%8f%a3" class="nav-实现-observer-接口">
+									实现 Observer 接口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%89%8b%e5%8a%a8%e5%88%9b%e5%bb%ba-observable-%e7%9a%84%e7%bc%ba%e9%99%b7" class="nav-手动创建-observable-的缺陷">
+									手动创建 Observable 的缺陷
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#observablebase-%e6%8e%a5%e5%8f%a3" class="nav-observablebase-接口">
+									ObservableBase 接口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#observablecreate-%e6%96%b9%e6%b3%95" class="nav-observablecreate-方法">
+									Observable.Create 方法
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%bb%b6%e8%bf%9f%e5%88%9d%e5%a7%8b%e5%8c%96-defer" class="nav-延迟初始化-defer">
+									延迟初始化 Defer
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%94%b1%e4%ba%8b%e4%bb%b6%e8%bd%ac%e6%8d%a2" class="nav-由事件转换">
+									由事件转换
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e6%a0%87%e5%87%86%e4%ba%8b%e4%bb%b6" class="nav-标准事件">
+									标准事件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%8d%e6%a0%87%e5%87%86%e4%ba%8b%e4%bb%b6" class="nav-不标准事件">
+									不标准事件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9b%b4%e5%a4%8d%e6%9d%82%e7%9a%84%e4%ba%8b%e4%bb%b6" class="nav-更复杂的事件">
+									更复杂的事件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%97%a0%e5%8f%82%e4%ba%8b%e4%bb%b6" class="nav-无参事件">
+									无参事件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%94%b1%e8%bf%ad%e4%bb%a3%e7%b1%bb%e5%9e%8b%e8%bd%ac%e6%8d%a2" class="nav-由迭代类型转换">
+									由迭代类型转换
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%bf%ad%e4%bb%a3%e7%b1%bb%e5%9e%8b--%e5%8f%af%e8%a7%82%e5%af%9f%e6%b5%81" class="nav-迭代类型--可观察流">
+									迭代类型 → 可观察流
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%af%e8%a7%82%e5%af%9f%e6%b5%81--%e8%bf%ad%e4%bb%a3%e7%b1%bb%e5%9e%8b" class="nav-可观察流--迭代类型">
+									可观察流 → 迭代类型
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%af%e8%a7%82%e5%af%9f%e6%b5%81--%e5%ad%97%e5%85%b8" class="nav-可观察流--字典">
+									可观察流 → 字典
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#rx-%e5%88%9b%e5%bb%ba%e5%9e%8b%e6%93%8d%e4%bd%9c%e7%ac%a6" class="nav-rx-创建型操作符">
+									Rx 创建型操作符
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%8f%af%e8%a7%82%e5%af%9f%e5%be%aa%e7%8e%af" class="nav-可观察循环">
+									可观察循环
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%af%bb%e5%8f%96%e6%96%87%e4%bb%b6" class="nav-读取文件">
+									读取文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8e%9f%e5%a7%8b%e5%8f%af%e8%a7%82%e5%af%9f%e6%b5%81" class="nav-原始可观察流">
+									原始可观察流
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#return" class="nav-return">
+									Return
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#never" class="nav-never">
+									Never
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#throw" class="nav-throw">
+									Throw
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#empty" class="nav-empty">
+									Empty
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://kyocius.github.io/">
+            游尔港
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://kyocius.github.io/">
+        <div class="single-column-header-title">游尔港</div>
+        
+        <div class="single-column-header-subtitle">The Mind Port</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+                
+            
+
+            <div class="post-head-wrapper"
+                
+                    
+                    
+                    style="background-image: url('/posts/2023/dotnet/reactive/rx-magic-3/head.jpg')"
+                    
+                
+            >
+                <div class="post-title">
+                    Rx.NET 响应式编程指北 03 - 深入流的创建
+                    
+                    <div class="post-subtitle">
+                        Rx.NET in Action 笔记
+                    </div>
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2022-08-10 00:00
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[Dev]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/rx.net-tutorial">Rx.NET Tutorial</a>
+                                &nbsp;
+                            
+                                <a href="/tags/csharp">CSharp</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h2 id="前言">前言</h2>
+<p>之前我们见识了 Rx.NET 的基本用法，把 .NET 事件转化成了可观察数据流，并且补充了一些拓展知识（Ex），现在我们要接着深入 Rx.NET 的核心技术了。</p>
+<h2 id="普通数据流">普通数据流</h2>
+<p>还记得吗，<code>IObservable</code> 接口只有一个方法 <code>Subscribe</code>，是 Rx.NET 的基础。</p>
+<p>我们将试着打造一个<strong>即时通讯</strong>系统。</p>
+<h3 id="实现-iobservable-接口">实现 <code>IObservable</code> 接口</h3>
+<p>在实际的开发中，非常不推荐直接实现 <code>IObservable</code> 接口，但是理解这个流程对我们的学习很有帮助。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">using</span> System.Reactive.Disposables;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">NumbersObservable</span> : IObservable&lt;<span style="color:#8be9fd">int</span>&gt;
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">readonly</span> <span style="color:#8be9fd">int</span> _amount;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">public</span> NumbersObservable(<span style="color:#8be9fd">int</span> amount) 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>         _amount = amount;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">public</span> IDisposable Subscribe(IObserver&lt;<span style="color:#8be9fd">int</span>&gt; observer)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i = <span style="color:#bd93f9">0</span>; i &lt; _amount; i++) 
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            observer.OnNext(i); 
+</span></span><span style="display:flex;"><span>        } 
+</span></span><span style="display:flex;"><span>        observer.OnCompleted(); 
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> Disposable.Empty; 
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="实现-observer-接口">实现 <code>Observer</code> 接口</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">ConsoleObserver</span>&lt;T&gt; : IObserver&lt;T&gt; 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">readonly</span> <span style="color:#8be9fd">string</span> _name;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">public</span> ConsoleObserver(<span style="color:#8be9fd">string</span> name=<span style="color:#f1fa8c">&#34;&#34;</span>) 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _name = name;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> OnNext(T <span style="color:#ff79c6">value</span>) 
+</span></span><span style="display:flex;"><span>    { 
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#f1fa8c">&#34;{0} - OnNext({1})&#34;</span>,_name,<span style="color:#ff79c6">value</span>); 
+</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> OnError(Exception error) 
+</span></span><span style="display:flex;"><span>    { 
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#f1fa8c">&#34;{0} - OnError:&#34;</span>, _name); 
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#f1fa8c">&#34;\t {0}&#34;</span>, error); 
+</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> OnCompleted() 
+</span></span><span style="display:flex;"><span>    { 
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#f1fa8c">&#34;{0} - OnCompleted()&#34;</span>, _name); 
+</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>最后消费它：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#8be9fd">var</span> numbers = <span style="color:#ff79c6">new</span> NumbersObservable(<span style="color:#bd93f9">5</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">var</span> subscription =
+</span></span><span style="display:flex;"><span>    numbers.Subscribe(<span style="color:#ff79c6">new</span> ConsoleObserver&lt;<span style="color:#8be9fd">int</span>&gt;(<span style="color:#f1fa8c">&#34;numbers&#34;</span>));
+</span></span></code></pre></div><p>看看结果：</p>
+<pre tabindex="0"><code>numbers - OnNext(0)
+numbers - OnNext(1)
+numbers - OnNext(2)
+numbers - OnNext(3)
+numbers - OnNext(4)
+numbers - OnCompleted()
+</code></pre><p>我们现在手动实现了一个可观察数据流和观察者。</p>
+<p>再来个扩展方法方便我们打印，</p>
+<p>注意！这个方法将会<strong>贯穿</strong>之后的章节：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Extensions</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> IDisposable SubscribeConsole&lt;T&gt;(
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">this</span> IObservable&lt;T&gt; observable,
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">string</span> name = <span style="color:#f1fa8c">&#34;&#34;</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> observable.Subscribe(<span style="color:#ff79c6">new</span> ConsoleObserver&lt;T&gt;(name));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="手动创建-observable-的缺陷">手动创建 <code>Observable</code> 的缺陷</h3>
+<p>手动创建可观察数据流一般不推荐且很少用，因为如此明显繁琐且容易出错。</p>
+<p>除此之外，如果你不小心在 <code>OnComplete</code> 方法之后调用了 <code>OnNext</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">public</span> IDisposable Subscribe(IObserver&lt;<span style="color:#8be9fd">int</span>&gt; observer)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i = <span style="color:#bd93f9">0</span>; i &lt; _amount; i++)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        observer.OnNext(i);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    observer.OnCompleted();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    observer.OnNext(_amount); <span style="color:#6272a4">// 注意这行</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> Disposable.Empty;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>你将得到以下结果：</p>
+<pre tabindex="0"><code>errorTest - OnNext(0)
+errorTest - OnNext(1)
+errorTest - OnNext(2)
+errorTest - OnNext(3)
+errorTest - OnNext(4)
+errorTest - OnComplete
+errorTest - OnNext(5)
+</code></pre><p>怎么会事捏， <code>OnComplete</code> 之后居然还能订阅到数据？</p>
+<p>这是 Rx 背后 <code>Observable</code> 与 <code>Observer</code> 的 <code>Repeat</code> 方法重新订阅导致的。</p>
+<h3 id="observablebase-接口"><code>ObservableBase</code> 接口</h3>
+<p>手写也不是不可以，比如当你想封装一个复杂的、包含事件属性的接口的时候：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">interface</span> <span style="color:#50fa7b">IChatConnection</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">event</span> Action&lt;<span style="color:#8be9fd">string</span>&gt; Received; 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">event</span> Action Closed; 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">event</span> Action&lt;Exception&gt; Error; 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">void</span> Disconnect(); 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>我们一般会写个 Client：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">ChatClient</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">public</span> IChatConnection Connect(<span style="color:#8be9fd">string</span> user, <span style="color:#8be9fd">string</span> password)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>       <span style="color:#6272a4">// 连接服务</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>再手动改写成一个 <code>Observable</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">using</span> System.Reactive;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">using</span> System.Reactive.Disposables;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">ObservableConnection</span> : ObservableBase&lt;<span style="color:#8be9fd">string</span>&gt;
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">readonly</span> IChatConnection _chatConnection;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">public</span> ObservableConnection(IChatConnection chatConnection) 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _chatConnection = chatConnection; 
+</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">protected</span> <span style="color:#ff79c6">override</span> IDisposable SubscribeCore(IObserver&lt;<span style="color:#8be9fd">string</span>&gt; observer)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Action&lt;<span style="color:#8be9fd">string</span>&gt; received = message =&gt; 
+</span></span><span style="display:flex;"><span>        { 
+</span></span><span style="display:flex;"><span>            observer.OnNext(message); 
+</span></span><span style="display:flex;"><span>        }; 
+</span></span><span style="display:flex;"><span>        Action closed = () =&gt; 
+</span></span><span style="display:flex;"><span>        { 
+</span></span><span style="display:flex;"><span>            observer.OnCompleted(); 
+</span></span><span style="display:flex;"><span>        }; 
+</span></span><span style="display:flex;"><span>        Action&lt;Exception&gt; error = ex =&gt; 
+</span></span><span style="display:flex;"><span>        { 
+</span></span><span style="display:flex;"><span>            observer.OnError(ex); 
+</span></span><span style="display:flex;"><span>        }; 
+</span></span><span style="display:flex;"><span>        _chatConnection.Received += received;
+</span></span><span style="display:flex;"><span>        _chatConnection.Closed += closed;
+</span></span><span style="display:flex;"><span>        _chatConnection.Error += error;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> Disposable.Create(() =&gt; 
+</span></span><span style="display:flex;"><span>        { 
+</span></span><span style="display:flex;"><span>            _chatConnection.Received -= received; 
+</span></span><span style="display:flex;"><span>            _chatConnection.Closed -= closed; 
+</span></span><span style="display:flex;"><span>            _chatConnection.Error -= error; 
+</span></span><span style="display:flex;"><span>            _chatConnection.Disconnect(); 
+</span></span><span style="display:flex;"><span>        }); 
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>发现没，这其实就是 SignalR 的写法（微软的后端框架）</p>
+</blockquote>
+<p>现在消费：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#8be9fd">var</span> chatClient = <span style="color:#ff79c6">new</span> ChatClient(); 
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">var</span> connection = chatClient.Connect(<span style="color:#f1fa8c">&#34;guest&#34;</span>, <span style="color:#f1fa8c">&#34;guest&#34;</span>); 
+</span></span><span style="display:flex;"><span>IObservable&lt;<span style="color:#8be9fd">string</span>&gt; observableConnection = <span style="color:#ff79c6">new</span> ObservableConnection(connection); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// 最开始的那个类</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">var</span> subscription = observableConnection.SubscribeConsole(<span style="color:#f1fa8c">&#34;receiver&#34;</span>); 
+</span></span></code></pre></div><p>写个扩展方法来简化操作：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">ChatExtensions</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> IObservable&lt;<span style="color:#8be9fd">string</span>&gt; ToObservable(<span style="color:#ff79c6">this</span> IChatConnection connection)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> ObservableConnection(connection);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>综合下来看，这么手动写也太踏马折磨了。Rx 有没有方法来简化这些操作呢？</p>
+<h3 id="observablecreate-方法"><code>Observable.Create</code> 方法</h3>
+<p>别傻乎乎地手写了，Rx 可是提供了好用的工厂函数呢。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>Observable.Create&lt;<span style="color:#8be9fd">int</span>&gt;(observer =&gt; 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i = <span style="color:#bd93f9">0</span>; i &lt; <span style="color:#bd93f9">5</span>; i++) 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        observer.OnNext(i);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    observer.OnCompleted();
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> Disposable.Empty;
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>直接写个 Lambda 表达式来作为 <code>Subscribe</code> 方法。</p>
+<p><code>Observable.Create</code> 非常灵活，因此也被大量使用在 Rx 的应用中。</p>
+<h3 id="延迟初始化-defer">延迟初始化 Defer</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">public</span> IObservable&lt;<span style="color:#8be9fd">string</span>&gt; ObserveMessages(<span style="color:#8be9fd">string</span> user, <span style="color:#8be9fd">string</span> password)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">var</span> connection = Connect(user, password); 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> connection.ToObservable();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>当我们想要这个可观察数据流仅在有观察者订阅它的时候才会被创建时，我们可以使用 <code>Observable.Defer</code> 方法来延迟初始化：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">public</span> IObservable&lt;<span style="color:#8be9fd">string</span>&gt; ObserveMessagesDeferred(<span style="color:#8be9fd">string</span> user, <span style="color:#8be9fd">string</span> password)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> Observable.Defer(() =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">var</span> connection = Connect(user, password);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> connection.ToObservable();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>需要指出的是，由这些工厂函数创建的可观察数据流并不能共享观察者：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#8be9fd">var</span> messages = chatClient.ObserveMessagesDeferred(<span style="color:#f1fa8c">&#34;user&#34;</span>,<span style="color:#f1fa8c">&#34;password&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">var</span> subscription1 = messages.SubscribeConsole();
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">var</span> subscription2 = messages.SubscribeConsole();
+</span></span></code></pre></div><p>也就是说， <code>subscription1</code> 和 <code>subscription2</code> 是两个完全独立的实例。</p>
+<p>关于「共享流」「热流」以及「冷流」的知识将会在第六章讲解。</p>
+<h2 id="由事件转换">由事件转换</h2>
+<p>在第二章我们已经见识过了，这回来点儿更深入的。</p>
+<p>先看定义：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>FromEventPattern&lt;TDelegate, TEventArgs&gt;(Action&lt;TDelegate&gt; addHandler, Action&lt;TDelegate&gt; removeHandler)
+</span></span></code></pre></div><h3 id="标准事件">标准事件</h3>
+<p>来个事件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">event</span> RoutedEventHandler Click;
+</span></span></code></pre></div><p>这个委托类型是 <code>System.Windows</code> 中定义好的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">delegate</span> <span style="color:#ff79c6">void</span> RoutedEventHandler(<span style="color:#8be9fd">object</span> sender, System.Windows.RoutedEventArgs e)
+</span></span></code></pre></div><p>转化成可观察的事件流：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;EventPattern&lt;RoutedEventArgs&gt;&gt; clicks = Observable.FromEventPattern&lt;RoutedEventHandler, RoutedEventArgs&gt;(
+</span></span><span style="display:flex;"><span>    h =&gt; theButton.Click += h,
+</span></span><span style="display:flex;"><span>    h =&gt; theButton.Click -= h);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>clicks.SubscribeConsole(); 
+</span></span></code></pre></div><p>Rx 还提供了一种简化的写法，但并不推荐：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;EventPattern&lt;<span style="color:#8be9fd">object</span>&gt;&gt; clicks = 
+</span></span><span style="display:flex;"><span>    Observable.FromEventPattern(theButton, <span style="color:#f1fa8c">&#34;Click&#34;</span>);
+</span></span></code></pre></div><h3 id="不标准事件">不标准事件</h3>
+<p>并不是所有事件的参数都是一个 <code>Sender</code> + 一个 <code>EventArgs</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">delegate</span> <span style="color:#ff79c6">void</span> NetworkFoundEventHandler(<span style="color:#8be9fd">string</span> ssid);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">WifiScanner</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">event</span> NetworkFoundEventHandler NetworkFound = <span style="color:#ff79c6">delegate</span> { };
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// ...</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>可以看到这个事件需要一个字符串类型的参数。</p>
+<p>之前的 <code>FromEventPattern</code> 就不能用了，Rx 提供了 <code>FromEvent</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;TEventArgs&gt; FromEvent&lt;TDelegate, TEventArgs&gt;(Action&lt;TDelegate&gt; addHandler, Action&lt;TDelegate&gt; removeHandler);
+</span></span></code></pre></div><p>如此就可以：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#8be9fd">var</span> wifiScanner = <span style="color:#ff79c6">new</span> WifiScanner();
+</span></span><span style="display:flex;"><span>IObservable&lt;<span style="color:#8be9fd">string</span>&gt; networks = 
+</span></span><span style="display:flex;"><span>    Observable.FromEvent&lt;NetworkFoundEventHandler, <span style="color:#8be9fd">string</span>&gt;(
+</span></span><span style="display:flex;"><span>        h =&gt; wifiScanner.NetworkFound += h,
+</span></span><span style="display:flex;"><span>        h =&gt; wifiScanner.NetworkFound -= h);
+</span></span></code></pre></div><h3 id="更复杂的事件">更复杂的事件</h3>
+<p>Of course，还有更复杂的事件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">delegate</span> <span style="color:#ff79c6">void</span> ExtendedNetworkFoundEventHandler(<span style="color:#8be9fd">string</span> ssid, <span style="color:#8be9fd">int</span> strength);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">WifiScanner</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">event</span> ExtendedNetworkFoundEventHandler ExtendedNetworkFound = <span style="color:#ff79c6">delegate</span> { };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>放心，<code>FromEvent</code> 提供了重载：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;TEventArgs&gt; FromEvent&lt;TDelegate, TEventArgs&gt;(
+</span></span><span style="display:flex;"><span>    Func&lt;Action&lt;TEventArgs&gt;, TDelegate&gt; conversion,
+</span></span><span style="display:flex;"><span>    Action&lt;TDelegate&gt; addHandler,
+</span></span><span style="display:flex;"><span>    Action&lt;TDelegate&gt; removeHandler);
+</span></span></code></pre></div><p>下面需要利用元组（Tuple）的特性：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;Tuple&lt;<span style="color:#8be9fd">string</span>, <span style="color:#8be9fd">int</span>&gt;&gt; networks =
+</span></span><span style="display:flex;"><span>    Observable.FromEvent&lt;ExtendedNetworkFoundEventHandler, Tuple&lt;<span style="color:#8be9fd">string</span>, <span style="color:#8be9fd">int</span>&gt;&gt;(
+</span></span><span style="display:flex;"><span>        rxHandler =&gt; (ssid, strength) =&gt; rxHandler(Tuple.Create(ssid, strength)),
+</span></span><span style="display:flex;"><span>        h =&gt; wifiScanner.ExtendedNetworkFound += h,
+</span></span><span style="display:flex;"><span>        h =&gt; wifiScanner.ExtendedNetworkFound -= h);
+</span></span></code></pre></div><h3 id="无参事件">无参事件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">event</span> Action Connected = <span style="color:#ff79c6">delegate</span> { };
+</span></span></code></pre></div><p>我们需要这么写：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;Unit&gt; connected =
+</span></span><span style="display:flex;"><span>    Observable.FromEvent(h =&gt; wifiScanner.Connected += h,
+</span></span><span style="display:flex;"><span>                         h =&gt; wifiScanner.Connected -= h);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>connected.SubscribeConsole(<span style="color:#f1fa8c">&#34;connected&#34;</span>);
+</span></span></code></pre></div><p><code>Unit</code> 类型代表了「空」，它 <code>ToString</code> 之后的值为「()」</p>
+<p>所以你会得到以下结果：</p>
+<pre tabindex="0"><code>connected - OnNext(())
+connected - OnNext(())
+</code></pre><h2 id="由迭代类型转换">由迭代类型转换</h2>
+<p>迭代类型和可观察类型长得很像，Rx 也提供了转换的方法。</p>
+<h3 id="迭代类型--可观察流">迭代类型 → 可观察流</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IEnumerable&lt;<span style="color:#8be9fd">string</span>&gt; names = <span style="color:#ff79c6">new</span> []{<span style="color:#f1fa8c">&#34;AHpx&#34;</span>, <span style="color:#f1fa8c">&#34;Yoroion&#34;</span>, <span style="color:#f1fa8c">&#34;Weeknic&#34;</span>, <span style="color:#f1fa8c">&#34;GodLeaveMe&#34;</span>};
+</span></span><span style="display:flex;"><span>IObservable&lt;<span style="color:#8be9fd">string</span>&gt; observable = names.ToObservable();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>observable.SubscribeConsole(<span style="color:#f1fa8c">&#34;names&#34;</span>);
+</span></span></code></pre></div><p>你将会得到：</p>
+<pre tabindex="0"><code>names - OnNext(AHpx)
+names - OnNext(Yoroion)
+names - OnNext(Weekenic)
+names - OnNext(GodLeaveMe)
+names - OnCompleted()
+</code></pre><p>如果迭代的过程中发生了错误，那么报错就会传递至 <code>OnError</code> 方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Program</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">void</span> Main(<span style="color:#8be9fd">string</span>[] args)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        NumbersAndThrow() 
+</span></span><span style="display:flex;"><span>            .ToObservable()
+</span></span><span style="display:flex;"><span>            .SubscribeConsole(<span style="color:#f1fa8c">&#34;names&#34;</span>);
+</span></span><span style="display:flex;"><span>        Console.ReadLine();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">static</span> IEnumerable&lt;<span style="color:#8be9fd">int</span>&gt; NumbersAndThrow()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">yield</span> <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">yield</span> <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">2</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">yield</span> <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">3</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">throw</span> <span style="color:#ff79c6">new</span> ApplicationException(<span style="color:#f1fa8c">&#34;报错啦&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">yield</span> <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">4</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>输出：</p>
+<pre tabindex="0"><code>enumerable with exception - OnNext(1)
+enumerable with exception - OnNext(2)
+enumerable with exception - OnNext(3)
+enumerable with exception - OnError:
+    System.ApplicationException: Something Bad Happened
+</code></pre><p>Rx 还提供了一个更简单的方法，直接订阅迭代类型：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IEnumerable&lt;<span style="color:#8be9fd">string</span>&gt; names = <span style="color:#ff79c6">new</span>[] { <span style="color:#f1fa8c">&#34;AHpx&#34;</span>, <span style="color:#f1fa8c">&#34;Yoroion&#34;</span>, <span style="color:#f1fa8c">&#34;Weeknic&#34;</span>, <span style="color:#f1fa8c">&#34;GodLeaveMe&#34;</span> };
+</span></span><span style="display:flex;"><span>names.Subscribe(<span style="color:#ff79c6">new</span> ConsoleObserver&lt;<span style="color:#8be9fd">string</span>&gt;(<span style="color:#f1fa8c">&#34;subscribe&#34;</span>));
+</span></span></code></pre></div><p>那么如何合并可观察数据流与迭代类型呢？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>ChatClient client = <span style="color:#ff79c6">new</span> ChatClient();
+</span></span><span style="display:flex;"><span>IObservable&lt;<span style="color:#8be9fd">string</span>&gt; liveMessages = client.ObserveMessages(<span style="color:#f1fa8c">&#34;user&#34;</span>,<span style="color:#f1fa8c">&#34;pass&#34;</span>); 
+</span></span><span style="display:flex;"><span>IEnumerable&lt;<span style="color:#8be9fd">string</span>&gt; loadedMessages = LoadMessagesFromDB(); <span style="color:#6272a4">// 假设从数据库加载数据</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>loadedMessages.ToObservable()
+</span></span><span style="display:flex;"><span>    .Concat(liveMessages)
+</span></span><span style="display:flex;"><span>    .SubscribeConsole(<span style="color:#f1fa8c">&#34;merged&#34;</span>);
+</span></span></code></pre></div><p>注意看，以上代码使用了 <code>Concat</code> 合并了两个流。在所有 Database 数据（Loaded Messages）被加载后，实时数据（Live Messages）才会被发给观察者。</p>
+<pre tabindex="0"><code>merged - OnNext(loaded1)
+merged - OnNext(loaded2)
+merged - OnNext(live message1)
+merged - OnNext(live message2)
+</code></pre><p>你也可以用以下写法免于手动转换：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>liveMessages
+</span></span><span style="display:flex;"><span>    .StartWith(loadedMessages)
+</span></span><span style="display:flex;"><span>    .SubscribeConsole(<span style="color:#f1fa8c">&#34;loaded first&#34;</span>);
+</span></span></code></pre></div><h3 id="可观察流--迭代类型">可观察流 → 迭代类型</h3>
+<p>为啥要把可观察流转化成迭代类型呢？因为有的方法只接受迭代类型。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#8be9fd">var</span> observable =
+</span></span><span style="display:flex;"><span>    Observable.Create&lt;<span style="color:#8be9fd">string</span>&gt;(o =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        o.OnNext(<span style="color:#f1fa8c">&#34;Observable&#34;</span>);
+</span></span><span style="display:flex;"><span>        o.OnNext(<span style="color:#f1fa8c">&#34;To&#34;</span>);
+</span></span><span style="display:flex;"><span>        o.OnNext(<span style="color:#f1fa8c">&#34;Enumerable&#34;</span>);
+</span></span><span style="display:flex;"><span>        o.OnCompleted(); <span style="color:#6272a4">// 当所有OnNext中的值被消费后，线程会进入等待状态</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> Disposable.Empty;
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">var</span> enumerable = observable.ToEnumerable();
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// 可观察流完成时，循环便会结束</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">foreach</span> (<span style="color:#8be9fd">var</span> item <span style="color:#ff79c6">in</span> enumerable) 
+</span></span><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>    Console.WriteLine(item); 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>把可观察流转换成 List：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#8be9fd">var</span> observable =
+</span></span><span style="display:flex;"><span>    Observable.Create&lt;<span style="color:#8be9fd">string</span>&gt;(o =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        o.OnNext(<span style="color:#f1fa8c">&#34;Observable&#34;</span>);
+</span></span><span style="display:flex;"><span>        o.OnNext(<span style="color:#f1fa8c">&#34;To&#34;</span>);
+</span></span><span style="display:flex;"><span>        o.OnNext(<span style="color:#f1fa8c">&#34;List&#34;</span>);
+</span></span><span style="display:flex;"><span>        o.OnCompleted(); <span style="color:#6272a4">// 只有当Complete之后，List才会被发送给观察者</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> Disposable.Empty;
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>IObservable&lt;IList&lt;<span style="color:#8be9fd">string</span>&gt;&gt; listObservable =
+</span></span><span style="display:flex;"><span>    observable.ToList();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>listObservable
+</span></span><span style="display:flex;"><span>    .Select(lst =&gt; <span style="color:#8be9fd">string</span>.Join(<span style="color:#f1fa8c">&#34;,&#34;</span>, lst)) <span style="color:#6272a4">// 使用逗号分隔</span>
+</span></span><span style="display:flex;"><span>    .SubscribeConsole(<span style="color:#f1fa8c">&#34;list ready&#34;</span>);
+</span></span></code></pre></div><p>输出：</p>
+<pre tabindex="0"><code>list ready - OnNext(Observable,To,List)
+list ready - OnCompleted()
+</code></pre><h3 id="可观察流--字典">可观察流 → 字典</h3>
+<p>Rx 提供了如下方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;IDictionary&lt;TKey, TSource&gt;&gt; ToDictionary&lt;TSource, TKey&gt;(<span style="color:#ff79c6">this</span> IObservable&lt;TSource&gt; source, Func&lt;TSource, TKey&gt; keySelector)
+</span></span></code></pre></div><p>简单使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IEnumerable&lt;<span style="color:#8be9fd">string</span>&gt; cities = <span style="color:#ff79c6">new</span>[] { <span style="color:#f1fa8c">&#34;London&#34;</span>, <span style="color:#f1fa8c">&#34;Tel-Aviv&#34;</span>, <span style="color:#f1fa8c">&#34;Tokyo&#34;</span>, <span style="color:#f1fa8c">&#34;Rome&#34;</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">var</span> dictionaryObservable = cities
+</span></span><span style="display:flex;"><span>    .ToObservable()
+</span></span><span style="display:flex;"><span>    .ToDictionary(c =&gt; c.Length);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dictionaryObservable
+</span></span><span style="display:flex;"><span>    .Select(d =&gt; <span style="color:#8be9fd">string</span>.Join(<span style="color:#f1fa8c">&#34;,&#34;</span>, d)) 
+</span></span><span style="display:flex;"><span>    .SubscribeConsole(<span style="color:#f1fa8c">&#34;dictionary&#34;</span>);
+</span></span></code></pre></div><p>输出：</p>
+<pre tabindex="0"><code>dictionary - OnNext([6, London],[8, Tel-Aviv],[5, Tokyo],[4, Rome])
+dictionary - OnCompleted()
+</code></pre><p>但是当两个 Key 的值相同时，它就会报错。</p>
+<p>如果你需要一 Key 对应多值，你就需要 <strong>Lookup</strong> 类型：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;ILookup&lt;TKey, TSource&gt;&gt; ToLookup&lt;TSource, TKey&gt;(<span style="color:#ff79c6">this</span> IObservable&lt;TSource&gt; source, Func&lt;TSource, TKey&gt; keySelector)
+</span></span></code></pre></div><p>长得和 <code>ToDictionary</code> 非常相似。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IEnumerable&lt;<span style="color:#8be9fd">string</span>&gt; cities = <span style="color:#ff79c6">new</span>[] { <span style="color:#f1fa8c">&#34;London&#34;</span>, <span style="color:#f1fa8c">&#34;Tel-Aviv&#34;</span>, <span style="color:#f1fa8c">&#34;Tokyo&#34;</span>, <span style="color:#f1fa8c">&#34;Rome&#34;</span>, <span style="color:#f1fa8c">&#34;Madrid&#34;</span> }; 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">var</span> lookupObservable = cities
+</span></span><span style="display:flex;"><span>    .ToObservable()
+</span></span><span style="display:flex;"><span>    .ToLookup(c =&gt; c.Length); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lookupObservable
+</span></span><span style="display:flex;"><span>    .Select(lookup =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">var</span> groups = <span style="color:#ff79c6">new</span> StringBuilder(); 
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">foreach</span> (<span style="color:#8be9fd">var</span> grp <span style="color:#ff79c6">in</span> lookup) 
+</span></span><span style="display:flex;"><span>            groups.AppendFormat(<span style="color:#f1fa8c">&#34;[Key:{0} =&gt; {1}]&#34;</span>,grp.Key,grp.Count()); 
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> groups.ToString(); 
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .SubscribeConsole(<span style="color:#f1fa8c">&#34;lookup&#34;</span>);
+</span></span></code></pre></div><p>输出：</p>
+<pre tabindex="0"><code>lookup - OnNext([Key:6 =&gt; 2][Key:8 =&gt; 1][Key:5 =&gt; 1][Key:4 =&gt; 1])
+lookup - OnCompleted()
+</code></pre><p>因为伦敦（London）和马德里（Madrid）的长度都是 6，Lookup Key 6 就有两个值。</p>
+<h2 id="rx-创建型操作符">Rx 创建型操作符</h2>
+<h3 id="可观察循环">可观察循环</h3>
+<p>使用 <code>Observable.Generate</code> 来创建类似迭代的数据流：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;TResult&gt; Generate&lt;TState, TResult&gt;(
+</span></span><span style="display:flex;"><span>    TState initialState, 
+</span></span><span style="display:flex;"><span>    Func&lt;TState, <span style="color:#8be9fd">bool</span>&gt; condition, 
+</span></span><span style="display:flex;"><span>    Func&lt;TState, TState&gt; iterate, 
+</span></span><span style="display:flex;"><span>    Func&lt;TState, TResult&gt; resultSelector)
+</span></span></code></pre></div><p>简单使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;<span style="color:#8be9fd">int</span>&gt; observable = 
+</span></span><span style="display:flex;"><span>    Observable.Generate(
+</span></span><span style="display:flex;"><span>    <span style="color:#bd93f9">0</span>, <span style="color:#6272a4">//初始值</span>
+</span></span><span style="display:flex;"><span>    i =&gt; i &lt; <span style="color:#bd93f9">10</span>, <span style="color:#6272a4">//条件</span>
+</span></span><span style="display:flex;"><span>    i =&gt; i + <span style="color:#bd93f9">1</span>, <span style="color:#6272a4">//迭代</span>
+</span></span><span style="display:flex;"><span>    i =&gt; i*<span style="color:#bd93f9">2</span>); <span style="color:#6272a4">//数据处理</span>
+</span></span><span style="display:flex;"><span>observable.SubscribeConsole();
+</span></span></code></pre></div><p>你会得到：0, 2, 4, 6, 8, 10, 12, 14, 16, 18。</p>
+<p>使用 <code>Observable.Range</code> 简化以上操作：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;<span style="color:#8be9fd">int</span>&gt; Range(<span style="color:#8be9fd">int</span> start, <span style="color:#8be9fd">int</span> count)
+</span></span></code></pre></div><p>顾名思义：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;<span style="color:#8be9fd">int</span>&gt; observable = 
+</span></span><span style="display:flex;"><span>    Observable
+</span></span><span style="display:flex;"><span>    .Range(<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">10</span>) 
+</span></span><span style="display:flex;"><span>    .Select(i =&gt; i*<span style="color:#bd93f9">2</span>);
+</span></span></code></pre></div><h3 id="读取文件">读取文件</h3>
+<p>我们利用 <code>Generate</code> 方法来读取文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;<span style="color:#8be9fd">string</span>&gt; lines = 
+</span></span><span style="display:flex;"><span>    Observable.Generate(
+</span></span><span style="display:flex;"><span>    File.OpenText(<span style="color:#f1fa8c">&#34;TextFile.txt&#34;</span>), <span style="color:#6272a4">//这个地方有瑕疵</span>
+</span></span><span style="display:flex;"><span>    s =&gt; !s.EndOfStream, <span style="color:#6272a4">//迭代到文件末端</span>
+</span></span><span style="display:flex;"><span>    s =&gt; s, <span style="color:#6272a4">//状态就是文件流本身</span>
+</span></span><span style="display:flex;"><span>    s =&gt; s.ReadLine()); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lines.SubscribeConsole(<span style="color:#f1fa8c">&#34;lines&#34;</span>);
+</span></span></code></pre></div><p>输出：</p>
+<pre tabindex="0"><code>lines - OnNext(The 1st line)
+lines - OnNext(The 2nd line)
+lines - OnNext(The 3rd line)
+lines - OnNext(The 4th line)
+lines - OnCompleted()
+</code></pre><p>但是捏，我们肯定知道 IO 流的资源没有及时释放。文件还保持在打开的状态。</p>
+<p>在平时写 C# 中，我们一般会使用 <code>using var ...</code> 来自动释放资源。</p>
+<p>在 Rx.NET 中，提供了 <code>Observable.Using</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>IObservable&lt;<span style="color:#8be9fd">string</span>&gt; lines = Observable.Using(
+</span></span><span style="display:flex;"><span>    () =&gt; File.OpenText(<span style="color:#f1fa8c">&#34;TextFile.txt&#34;</span>), 
+</span></span><span style="display:flex;"><span>    stream =&gt;
+</span></span><span style="display:flex;"><span>    Observable.Generate(
+</span></span><span style="display:flex;"><span>        stream, <span style="color:#6272a4">//初始状态就是它自己</span>
+</span></span><span style="display:flex;"><span>        s =&gt; !s.EndOfStream, 
+</span></span><span style="display:flex;"><span>        s =&gt; s, 
+</span></span><span style="display:flex;"><span>        s =&gt; s.ReadLine()) 
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lines.SubscribeConsole(<span style="color:#f1fa8c">&#34;lines&#34;</span>);
+</span></span></code></pre></div><h3 id="原始可观察流">原始可观察流</h3>
+<p>有些 Rx 创建型操作符没啥用，但是可以拿来玩玩或者测试。</p>
+<h4 id="return">Return</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>Observable.Return(<span style="color:#f1fa8c">&#34;Hello World&#34;</span>)
+</span></span><span style="display:flex;"><span>    .SubscribeConsole(<span style="color:#f1fa8c">&#34;Return&#34;</span>);
+</span></span></code></pre></div><p>输出：</p>
+<pre tabindex="0"><code>Return - OnNext(Hello World)
+Return - OnCompleted()
+</code></pre><h4 id="never">Never</h4>
+<p>一个永不结束的数据流：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>Observable.Never&lt;<span style="color:#8be9fd">string</span>&gt;()
+</span></span><span style="display:flex;"><span>    .SubscribeConsole(<span style="color:#f1fa8c">&#34;Never&#34;</span>);
+</span></span></code></pre></div><h4 id="throw">Throw</h4>
+<p>一个运行即报错的流：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>Observable.Throw&lt;ApplicationException&gt;(
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">new</span> ApplicationException(<span style="color:#f1fa8c">&#34;something bad happened&#34;</span>))
+</span></span><span style="display:flex;"><span>    .SubscribeConsole(<span style="color:#f1fa8c">&#34;Throw&#34;</span>);
+</span></span></code></pre></div><p>输出：</p>
+<pre tabindex="0"><code>Throw - OnError:
+    System.ApplicationException: something bad happened
+</code></pre><h4 id="empty">Empty</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>Observable.Empty&lt;<span style="color:#8be9fd">string</span>&gt;()
+</span></span><span style="display:flex;"><span>    .SubscribeConsole(<span style="color:#f1fa8c">&#34;Empty&#34;</span>);
+</span></span></code></pre></div><p>输出：</p>
+<pre tabindex="0"><code>Empty - OnCompleted()
+</code></pre>
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">上次修改於 2022-08-10</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/2023/dotnet/advanced-csharp/">
+			下回<br>看看 C# 比较高级的特性
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/2023/dotnet/reactive/rx-magic-ex/">
+			上回<br>Rx.NET 响应式编程指北 Ex - 函数式 &amp; 流式接口
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="Kyocius/kyocius.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyODE4MDgxOTA="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOEMwNPs4CXHLA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://kyocius.github.io/">
+    
+        <div class="nav-title">
+            游尔港
+        </div>
+        
+        <div class="nav-subtitle">
+            The Mind Port
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                歸檔 Archive
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分類 Categories
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                標簽 Tags
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/about/">
+                關於 About
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                訂閱 RSS
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Kyocius. 本站遵循 CC-BY-NC 4.0 协议
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目錄 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" class="nav-前言">
+									前言
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%99%ae%e9%80%9a%e6%95%b0%e6%8d%ae%e6%b5%81" class="nav-普通数据流">
+									普通数据流
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%ae%9e%e7%8e%b0-iobservable-%e6%8e%a5%e5%8f%a3" class="nav-实现-iobservable-接口">
+									实现 IObservable 接口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%9e%e7%8e%b0-observer-%e6%8e%a5%e5%8f%a3" class="nav-实现-observer-接口">
+									实现 Observer 接口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%89%8b%e5%8a%a8%e5%88%9b%e5%bb%ba-observable-%e7%9a%84%e7%bc%ba%e9%99%b7" class="nav-手动创建-observable-的缺陷">
+									手动创建 Observable 的缺陷
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#observablebase-%e6%8e%a5%e5%8f%a3" class="nav-observablebase-接口">
+									ObservableBase 接口
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#observablecreate-%e6%96%b9%e6%b3%95" class="nav-observablecreate-方法">
+									Observable.Create 方法
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%bb%b6%e8%bf%9f%e5%88%9d%e5%a7%8b%e5%8c%96-defer" class="nav-延迟初始化-defer">
+									延迟初始化 Defer
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%94%b1%e4%ba%8b%e4%bb%b6%e8%bd%ac%e6%8d%a2" class="nav-由事件转换">
+									由事件转换
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e6%a0%87%e5%87%86%e4%ba%8b%e4%bb%b6" class="nav-标准事件">
+									标准事件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%8d%e6%a0%87%e5%87%86%e4%ba%8b%e4%bb%b6" class="nav-不标准事件">
+									不标准事件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9b%b4%e5%a4%8d%e6%9d%82%e7%9a%84%e4%ba%8b%e4%bb%b6" class="nav-更复杂的事件">
+									更复杂的事件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%97%a0%e5%8f%82%e4%ba%8b%e4%bb%b6" class="nav-无参事件">
+									无参事件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%94%b1%e8%bf%ad%e4%bb%a3%e7%b1%bb%e5%9e%8b%e8%bd%ac%e6%8d%a2" class="nav-由迭代类型转换">
+									由迭代类型转换
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%bf%ad%e4%bb%a3%e7%b1%bb%e5%9e%8b--%e5%8f%af%e8%a7%82%e5%af%9f%e6%b5%81" class="nav-迭代类型--可观察流">
+									迭代类型 → 可观察流
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%af%e8%a7%82%e5%af%9f%e6%b5%81--%e8%bf%ad%e4%bb%a3%e7%b1%bb%e5%9e%8b" class="nav-可观察流--迭代类型">
+									可观察流 → 迭代类型
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%af%e8%a7%82%e5%af%9f%e6%b5%81--%e5%ad%97%e5%85%b8" class="nav-可观察流--字典">
+									可观察流 → 字典
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#rx-%e5%88%9b%e5%bb%ba%e5%9e%8b%e6%93%8d%e4%bd%9c%e7%ac%a6" class="nav-rx-创建型操作符">
+									Rx 创建型操作符
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%8f%af%e8%a7%82%e5%af%9f%e5%be%aa%e7%8e%af" class="nav-可观察循环">
+									可观察循环
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%af%bb%e5%8f%96%e6%96%87%e4%bb%b6" class="nav-读取文件">
+									读取文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8e%9f%e5%a7%8b%e5%8f%af%e8%a7%82%e5%af%9f%e6%b5%81" class="nav-原始可观察流">
+									原始可观察流
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#return" class="nav-return">
+									Return
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#never" class="nav-never">
+									Never
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#throw" class="nav-throw">
+									Throw
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#empty" class="nav-empty">
+									Empty
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+
+<div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Kyocius. 本站遵循 CC-BY-NC 4.0 协议
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

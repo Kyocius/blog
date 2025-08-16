@@ -7,13 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Kyocius. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Fri, 24 Jan 2025 14:21:08 +0800</lastBuildDate><atom:link href="https://kyocius.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Aug 2025 11:47:00 +0800</lastBuildDate><atom:link href="https://kyocius.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>修复 uv 管理的 Python 在 Starship 中的显示问题</title>
+      <link>https://kyocius.github.io/posts/2025/2025-08-16-fix-starship/</link>
+      <pubDate>Sat, 16 Aug 2025 11:47:00 +0800</pubDate>
+      
+      <guid>https://kyocius.github.io/posts/2025/2025-08-16-fix-starship/</guid>
+      <description>前言 Starship 是一套高颜值 Shell 美化工具 uv 是新一代 Python 包管理器，同时还支持安装 Python 目前遇到的问题是，在 Starship 当前版本中，Python 版本不能正常显示：
+解决方案 首先，uv 在系统注册的环境变量是 ~/.local/bin 目录：
+所以在终端中输入 python、python3 等等都是不管用的。
+借鉴另一个包管理器， Pixi 的配置方案。在 starship.toml 中配置 Python 指向虚拟环境的位置，而不是企图在整个系统环境变量中找到 Python。
+找到 Starship 的 toml 配置目录：
+starship config 添加以下内容：
+[python] # customize python binary path for uv python_binary = [ &amp;#34;python&amp;#34;, # fall back to uv&amp;#39;s python if it&amp;#39;s available &amp;#34;.venv/Scripts/python&amp;#34;, ] 需要注意的是，.venv/Scripts/python 目录只适用于 Windows，如果是 Mac / Linux 应大概是 .venv/bin/python，需读者自己查证。
+修复效果 </description>
+    </item>
+    
     <item>
       <title>未来的未来：游尔的 2024 年终总结</title>
-      <link>https://kyocius.github.io/posts/casual-writting/2024-wrapping-up/</link>
-      <pubDate>Fri, 24 Jan 2025 14:21:08 +0800</pubDate>
+      <link>https://kyocius.github.io/posts/2025/2024-wrapping-up/</link>
+      <pubDate>Fri, 24 Jan 2025 21:08:00 +0800</pubDate>
       
-      <guid>https://kyocius.github.io/posts/casual-writting/2024-wrapping-up/</guid>
+      <guid>https://kyocius.github.io/posts/2025/2024-wrapping-up/</guid>
       <description>2024 年上半年真的很痛苦。我在学业上屡受打击，加上实验性学院（元班）哭笑不得的培养方案，令我感到前途无比黯淡。有时在肮脏的浴室里，一个人躲在角落的花洒下崩溃大哭。无数次，在深夜的床板上想过退学复读。我知道这很幼稚，但理想的遥不可及，总是容易令人万念俱灰。
 但 2024 年 9 月，我也遇到了上大学以来最幸运的事：我遇到了一个女孩。她接受了我的告白。没有小红书博主说的勾心斗角、暧昧不清。互生情愫的纯真，让两颗心很自然地接近了。
 并且随着眼界的拓宽，比如更强的 AI Coder 的迸发，也促使我转变思维，思考真正想做什么、该成为什么样的人了。
@@ -38,10 +54,10 @@ First Love 爱意确实会让人容光焕发。起码对我来说。我找到了
     
     <item>
       <title>潦草 PKU 区块链备忘录</title>
-      <link>https://kyocius.github.io/posts/pku-blockchain/2024-08-26-pku-btc/</link>
+      <link>https://kyocius.github.io/posts/2024/pku-blockchain/2024-08-26-pku-btc/</link>
       <pubDate>Mon, 26 Aug 2024 14:19:05 +0800</pubDate>
       
-      <guid>https://kyocius.github.io/posts/pku-blockchain/2024-08-26-pku-btc/</guid>
+      <guid>https://kyocius.github.io/posts/2024/pku-blockchain/2024-08-26-pku-btc/</guid>
       <description>不要被学术思维或是程序员思维限制创造力。
 密码学基础 哈希函数的三个特点：
 单向性（One-Wayness）：$X \rightarrow H(X)$。 唯一性（Uniqueness）：$X$ 只对应一个 $H(X)$。 抗碰撞性（Collision Resistance）：不存在 $H(X) = H(Y)$。 数据结构 最重要的哈希树（Merkle Tree）结构。
@@ -57,10 +73,10 @@ $$ Expected \ Time = 2016 \times 10 \ min/block $$</description>
     
     <item>
       <title>两只麻雀</title>
-      <link>https://kyocius.github.io/posts/casual-writting/2024-08-03-two-sparrow/</link>
+      <link>https://kyocius.github.io/posts/2024/2024-08-03-two-sparrow/</link>
       <pubDate>Sat, 03 Aug 2024 20:36:00 +0800</pubDate>
       
-      <guid>https://kyocius.github.io/posts/casual-writting/2024-08-03-two-sparrow/</guid>
+      <guid>https://kyocius.github.io/posts/2024/2024-08-03-two-sparrow/</guid>
       <description>走廊尽头，靠近窗户的一隅，是我的房间， 今早不知如何，飞进两只麻雀。
 一只麻雀仿佛在控诉，不停地撞击玻璃，想飞上镜花水月般的枝丫； 另一只受到了莫大的惊吓，躲进了洗手台的角落，发出微弱的呢喃。
 积灰的米黄色地板此时散落着麻雀的绒毛和白羽， 可想而知，这场努力落得多狼狈。
@@ -76,10 +92,10 @@ $$ Expected \ Time = 2016 \times 10 \ min/block $$</description>
     
     <item>
       <title>2024 夏日谈</title>
-      <link>https://kyocius.github.io/posts/casual-writting/2024-summer-holiday/</link>
+      <link>https://kyocius.github.io/posts/2024/2024-summer-holiday/</link>
       <pubDate>Tue, 25 Jun 2024 00:35:00 +0800</pubDate>
       
-      <guid>https://kyocius.github.io/posts/casual-writting/2024-summer-holiday/</guid>
+      <guid>https://kyocius.github.io/posts/2024/2024-summer-holiday/</guid>
       <description>6 月 24 日 推进雅思英语词汇，用的不背单词。还差正好 2000 个。
 重新学一遍线性代数，用的 3B1B 线性代数本质，看到 8/16，Manim 真是神奇。
 两个学期下来太狗屎了，没时间好好学，狗屁应试。考前挑着看了经典 MIT 线性代数系列，速通成功。虽然到最后 Jordan 标准型的类型题一半不会写，Hermite 矩阵是啥也忘了，Hamilton-Cayley 定理正好没复习。
@@ -104,10 +120,10 @@ React 还没碰，但是应该不急。
     
     <item>
       <title>近况，困顿与精神符号</title>
-      <link>https://kyocius.github.io/posts/casual-writting/2024-04-02-confusion/</link>
+      <link>https://kyocius.github.io/posts/2024/2024-04-02-confusion/</link>
       <pubDate>Tue, 02 Apr 2024 14:13:00 +0800</pubDate>
       
-      <guid>https://kyocius.github.io/posts/casual-writting/2024-04-02-confusion/</guid>
+      <guid>https://kyocius.github.io/posts/2024/2024-04-02-confusion/</guid>
       <description>大学生活没有想象中美好。形式的、毫无意义的活动和报告，在侵蚀我的热情，虽然我早知会如此。从前那些不以为意的选择和肤浅的见解，在这段时间成为了箍紧我的枷锁。我很不愿意承认自己会因为一些小事大发牢骚，但往往心中裂痕淌出的水滴，会在种种现实的挫伤下，变成决堤的洪流。
 我想，是时候梳理这股无谓的洪流了。
 上学期挂了学分最高的数学分析，下学期经过补考 GPA 能开出 3.66 但是均分依然很低，说实话我依然在疑惑这个绩点如何换算来的，比预期高很多。但在这所谓的○班里，GPA 比我高的比比皆是。在上大学之前我就拜读过 《上海交通大学生存手册》进而得知绩点不应该是大学生活的圭臬，这反而成为了深夜的自我安慰剂，每次摆烂后扎入皮肤，一瞬间「毕竟绩点才不是我所追求的」之类的话随着血液涌上脑海。但事实上我除了在内耗和摸鱼之间反反复复之外，真正学的东西少之又少。
@@ -123,10 +139,10 @@ React 还没碰，但是应该不急。
     
     <item>
       <title>笨方法学 C 附加题不完全解答</title>
-      <link>https://kyocius.github.io/posts/chip-design/clang-review/</link>
+      <link>https://kyocius.github.io/posts/2024/chip-design/clang-review/</link>
       <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://kyocius.github.io/posts/chip-design/clang-review/</guid>
+      <guid>https://kyocius.github.io/posts/2024/chip-design/clang-review/</guid>
       <description>前言 笔者撰写本文时还在上大一，数据结构基础几乎为零，所以会有一些可笑的问题和不合时宜的吐槽。
 本文尝试解答书后附加题，有的章节太简单就略过了。
 练习10：字符串数组和循环 如何使用 ,（逗号）字符来在for循环的每一部分中，;（分号）之间分隔多条语句？ for (i = 0, j = 10; i &amp;lt; 10; i++, j--) 查询 NULL 是什么东西，看看它会打印出什么？ 在 C 语言中，NULL 是一个宏定义，通常用于表示指针不指向任何有效的对象或地址。NULL 的确切定义可能因编译器和平台而异，但通常它被定义为 (void *)0，即一个转换为 void 指针类型的零值。
@@ -136,10 +152,10 @@ React 还没碰，但是应该不急。
     
     <item>
       <title>2023 当我谈论高中时</title>
-      <link>https://kyocius.github.io/posts/casual-writting/memory-graduation-2023/</link>
+      <link>https://kyocius.github.io/posts/2023/memory-graduation-2023/</link>
       <pubDate>Mon, 19 Jun 2023 19:36:00 +0800</pubDate>
       
-      <guid>https://kyocius.github.io/posts/casual-writting/memory-graduation-2023/</guid>
+      <guid>https://kyocius.github.io/posts/2023/memory-graduation-2023/</guid>
       <description>楔子 我曾不止一次在傍晚的晚自习课上，倏地意识游离，心思飘渺到了未来。幻想着那场考试后的心情与生活如何如何，幻想着不再受约束时又该时怎样欢欣。
 但等到真正经历后，却又出乎意料地平静。那些看似熬不到头的日子戛然而止，像是一根突然绷断的琴弦。同学们的欢笑、物理老师的提问，仿佛还流连在昨天，如同校园的秋桐叶飘落在湖边的水面上，漾起卷卷波纹。
 请原谅我的无病呻吟吧，看在这是一个乳臭未干的小子，头一回经历的份儿上。
@@ -178,11 +194,11 @@ React 还没碰，但是应该不急。
     </item>
     
     <item>
-      <title>写给 C# 开发者的 F# 光速入门指南（译）</title>
-      <link>https://kyocius.github.io/posts/dotnet/fsharp-for-csharp-devs/</link>
+      <title>写给 C# 开发者的 F# 光速入门指南</title>
+      <link>https://kyocius.github.io/posts/2023/dotnet/fsharp-for-csharp-devs/</link>
       <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kyocius.github.io/posts/dotnet/fsharp-for-csharp-devs/</guid>
+      <guid>https://kyocius.github.io/posts/2023/dotnet/fsharp-for-csharp-devs/</guid>
       <description>本文翻译自托管在 GitHub 上的 2fsharp 开源项目
 译版仅发表在知乎和 本人博客 上，未经授权禁止转载
 这个教程是基于实例来讲解的，将会花费你 15-30 分钟的时间，你将会学到 F# 这门语言 80% 的特性！
@@ -192,10 +208,10 @@ let GiveMeTheLength(input) = // 单行注释 let result = input.Length (* 多行
     
     <item>
       <title>看看 C# 比较高级的特性</title>
-      <link>https://kyocius.github.io/posts/dotnet/advanced-csharp/</link>
+      <link>https://kyocius.github.io/posts/2023/dotnet/advanced-csharp/</link>
       <pubDate>Mon, 15 Aug 2022 12:00:00 +0000</pubDate>
       
-      <guid>https://kyocius.github.io/posts/dotnet/advanced-csharp/</guid>
+      <guid>https://kyocius.github.io/posts/2023/dotnet/advanced-csharp/</guid>
       <description>前言 就是太久没写异步，有的用法忘了。所以写篇博客回顾一下。
 线程 Thread 虽然在 C# 中 Task 的使用频率远超直接使用线程，但是有关线程的概念还是要复习一下的。
 才不是因为我全忘了
@@ -206,10 +222,10 @@ Thread t = new Thread(Go); t.</description>
     
     <item>
       <title>Rx.NET 响应式编程指北 03 - 深入流的创建</title>
-      <link>https://kyocius.github.io/posts/dotnet/reactive/rx-magic-3/</link>
+      <link>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-3/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kyocius.github.io/posts/dotnet/reactive/rx-magic-3/</guid>
+      <guid>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-3/</guid>
       <description>前言 之前我们见识了 Rx.NET 的基本用法，把 .NET 事件转化成了可观察数据流，并且补充了一些拓展知识（Ex），现在我们要接着深入 Rx.NET 的核心技术了。
 普通数据流 还记得吗，IObservable 接口只有一个方法 Subscribe，是 Rx.NET 的基础。
 我们将试着打造一个即时通讯系统。
@@ -219,10 +235,10 @@ using System; using System.Reactive.Disposables; public class NumbersObservable 
     
     <item>
       <title>Rx.NET 响应式编程指北 Ex - 函数式 &amp; 流式接口</title>
-      <link>https://kyocius.github.io/posts/dotnet/reactive/rx-magic-ex/</link>
+      <link>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-ex/</link>
       <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kyocius.github.io/posts/dotnet/reactive/rx-magic-ex/</guid>
+      <guid>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-ex/</guid>
       <description>前言 这一章是独立于正式章节的番外，补充一下 C# 函数式编程（Functional Programming）以及流式接口（Fluent API）的知识。
 等等，我们不是在学 Rx.NET 吗，怎么又跑到函数式了？ (＃°Д°)
 你 先 别 急，二者并不冲突。
@@ -238,20 +254,20 @@ MyDelegateType myDel; myDel += &amp;lt;一些函数&amp;gt;; myDel(&amp;#34;firs
     
     <item>
       <title>Rx.NET 响应式编程指北 02 - 基本使用</title>
-      <link>https://kyocius.github.io/posts/dotnet/reactive/rx-magic-2/</link>
+      <link>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-2/</link>
       <pubDate>Mon, 08 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kyocius.github.io/posts/dotnet/reactive/rx-magic-2/</guid>
+      <guid>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-2/</guid>
       <description>前言 在上一章里，我们学习了响应式的基本概念。在这一章节，我们将编写一个股票监控程序。首先我们将使用传统的 .NET 事件系统来写一次，之后再通过 Rx 来重构。
 传统事件写法 先编写一个类，其中只有一个事件属性： class StockTicker { public event EventHandler&amp;lt;StockTick&amp;gt; StockTick; } 编写一个类包含我们的数据： class StockTick { public string QuoteSymbol { get; set; } public decimal Price { get; set; } } 创建一个类来监听变化，并订阅事件： class StockMonitor { public StockMonitor(StockTicker ticker) { ticker.StockTick += OnStockTick; // OnStockTick 注册事件 } ... } 因为我们需要比较股票价格的变化，所以我们可以通过字典来存储先前的股票数据。编写一个新类： class StockInfo { public StockInfo(string symbol, decimal price) { Symbol = symbol; PrevPrice = price; } public string Symbol { get; set; } public decimal PrevPrice { get; set; } } 之后你可以在 StockMonitor 中声明一个 StockInfo 类型的属性。</description>
     </item>
     
     <item>
       <title>Rx.NET 响应式编程指北 01 - 基础概念</title>
-      <link>https://kyocius.github.io/posts/dotnet/reactive/rx-magic-1/</link>
+      <link>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-1/</link>
       <pubDate>Sun, 07 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kyocius.github.io/posts/dotnet/reactive/rx-magic-1/</guid>
+      <guid>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-1/</guid>
       <description>前言 最近刚读了 Rx.NET in Action，学到的新概念非常多，担忧自己会日渐遗忘，觉得有必要写一篇博客记录一下，说不定也能帮到一些志同道合的朋友。
 本系列将会使用我深爱的 C# 语言和 Rx.NET 框架来讲解响应式编程（Reactive Programming）的魔法 ╰(°▽°)╯
 背景知识 C# 中的委托、泛型、事件以及 LINQ 等概念 Rx = Reactive Extension Rx 是由微软旗下一个实验室发起的 巨硬大法好 响应式概念 Rx 到底是干啥的？
