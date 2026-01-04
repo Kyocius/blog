@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Writing on 游尔港</title>
-    <link>https://kyocius.github.io/categories/writing/</link>
+    <link>https://kyocius.github.io/blog/categories/writing/</link>
     <description>Recent content in Writing on 游尔港</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Kyocius. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Fri, 24 Jan 2025 21:08:00 +0800</lastBuildDate><atom:link href="https://kyocius.github.io/categories/writing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Jan 2025 21:08:00 +0800</lastBuildDate><atom:link href="https://kyocius.github.io/blog/categories/writing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>未来的未来：游尔的 2024 年终总结</title>
-      <link>https://kyocius.github.io/posts/2025/2024-wrapping-up/</link>
+      <link>https://kyocius.github.io/blog/posts/2025/2024-wrapping-up/</link>
       <pubDate>Fri, 24 Jan 2025 21:08:00 +0800</pubDate>
       
-      <guid>https://kyocius.github.io/posts/2025/2024-wrapping-up/</guid>
+      <guid>https://kyocius.github.io/blog/posts/2025/2024-wrapping-up/</guid>
       <description>2024 年上半年真的很痛苦。我在学业上屡受打击，加上实验性学院（元班）哭笑不得的培养方案，令我感到前途无比黯淡。有时在肮脏的浴室里，一个人躲在角落的花洒下崩溃大哭。无数次，在深夜的床板上想过退学复读。我知道这很幼稚，但理想的遥不可及，总是容易令人万念俱灰。
 但 2024 年 9 月，我也遇到了上大学以来最幸运的事：我遇到了一个女孩。她接受了我的告白。没有小红书博主说的勾心斗角、暧昧不清。互生情愫的纯真，让两颗心很自然地接近了。
 并且随着眼界的拓宽，比如更强的 AI Coder 的迸发，也促使我转变思维，思考真正想做什么、该成为什么样的人了。
@@ -38,10 +38,10 @@ First Love 爱意确实会让人容光焕发。起码对我来说。我找到了
     
     <item>
       <title>两只麻雀</title>
-      <link>https://kyocius.github.io/posts/2024/2024-08-03-two-sparrow/</link>
+      <link>https://kyocius.github.io/blog/posts/2024/2024-08-03-two-sparrow/</link>
       <pubDate>Sat, 03 Aug 2024 20:36:00 +0800</pubDate>
       
-      <guid>https://kyocius.github.io/posts/2024/2024-08-03-two-sparrow/</guid>
+      <guid>https://kyocius.github.io/blog/posts/2024/2024-08-03-two-sparrow/</guid>
       <description>走廊尽头，靠近窗户的一隅，是我的房间， 今早不知如何，飞进两只麻雀。
 一只麻雀仿佛在控诉，不停地撞击玻璃，想飞上镜花水月般的枝丫； 另一只受到了莫大的惊吓，躲进了洗手台的角落，发出微弱的呢喃。
 积灰的米黄色地板此时散落着麻雀的绒毛和白羽， 可想而知，这场努力落得多狼狈。
@@ -57,10 +57,10 @@ First Love 爱意确实会让人容光焕发。起码对我来说。我找到了
     
     <item>
       <title>2024 夏日谈</title>
-      <link>https://kyocius.github.io/posts/2024/2024-summer-holiday/</link>
+      <link>https://kyocius.github.io/blog/posts/2024/2024-summer-holiday/</link>
       <pubDate>Tue, 25 Jun 2024 00:35:00 +0800</pubDate>
       
-      <guid>https://kyocius.github.io/posts/2024/2024-summer-holiday/</guid>
+      <guid>https://kyocius.github.io/blog/posts/2024/2024-summer-holiday/</guid>
       <description>6 月 24 日 推进雅思英语词汇，用的不背单词。还差正好 2000 个。
 重新学一遍线性代数，用的 3B1B 线性代数本质，看到 8/16，Manim 真是神奇。
 两个学期下来太狗屎了，没时间好好学，狗屁应试。考前挑着看了经典 MIT 线性代数系列，速通成功。虽然到最后 Jordan 标准型的类型题一半不会写，Hermite 矩阵是啥也忘了，Hamilton-Cayley 定理正好没复习。
@@ -85,10 +85,10 @@ React 还没碰，但是应该不急。
     
     <item>
       <title>近况，困顿与精神符号</title>
-      <link>https://kyocius.github.io/posts/2024/2024-04-02-confusion/</link>
+      <link>https://kyocius.github.io/blog/posts/2024/2024-04-02-confusion/</link>
       <pubDate>Tue, 02 Apr 2024 14:13:00 +0800</pubDate>
       
-      <guid>https://kyocius.github.io/posts/2024/2024-04-02-confusion/</guid>
+      <guid>https://kyocius.github.io/blog/posts/2024/2024-04-02-confusion/</guid>
       <description>大学生活没有想象中美好。形式的、毫无意义的活动和报告，在侵蚀我的热情，虽然我早知会如此。从前那些不以为意的选择和肤浅的见解，在这段时间成为了箍紧我的枷锁。我很不愿意承认自己会因为一些小事大发牢骚，但往往心中裂痕淌出的水滴，会在种种现实的挫伤下，变成决堤的洪流。
 我想，是时候梳理这股无谓的洪流了。
 上学期挂了学分最高的数学分析，下学期经过补考 GPA 能开出 3.66 但是均分依然很低，说实话我依然在疑惑这个绩点如何换算来的，比预期高很多。但在这所谓的○班里，GPA 比我高的比比皆是。在上大学之前我就拜读过 《上海交通大学生存手册》进而得知绩点不应该是大学生活的圭臬，这反而成为了深夜的自我安慰剂，每次摆烂后扎入皮肤，一瞬间「毕竟绩点才不是我所追求的」之类的话随着血液涌上脑海。但事实上我除了在内耗和摸鱼之间反反复复之外，真正学的东西少之又少。
@@ -104,10 +104,10 @@ React 还没碰，但是应该不急。
     
     <item>
       <title>2023 当我谈论高中时</title>
-      <link>https://kyocius.github.io/posts/2023/memory-graduation-2023/</link>
+      <link>https://kyocius.github.io/blog/posts/2023/memory-graduation-2023/</link>
       <pubDate>Mon, 19 Jun 2023 19:36:00 +0800</pubDate>
       
-      <guid>https://kyocius.github.io/posts/2023/memory-graduation-2023/</guid>
+      <guid>https://kyocius.github.io/blog/posts/2023/memory-graduation-2023/</guid>
       <description>楔子 我曾不止一次在傍晚的晚自习课上，倏地意识游离，心思飘渺到了未来。幻想着那场考试后的心情与生活如何如何，幻想着不再受约束时又该时怎样欢欣。
 但等到真正经历后，却又出乎意料地平静。那些看似熬不到头的日子戛然而止，像是一根突然绷断的琴弦。同学们的欢笑、物理老师的提问，仿佛还流连在昨天，如同校园的秋桐叶飘落在湖边的水面上，漾起卷卷波纹。
 请原谅我的无病呻吟吧，看在这是一个乳臭未干的小子，头一回经历的份儿上。

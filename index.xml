@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>游尔港</title>
-    <link>https://kyocius.github.io/</link>
+    <link>https://kyocius.github.io/blog/</link>
     <description>Recent content on 游尔港</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Kyocius. 本站遵循 CC-BY-NC 4.0 协议</copyright>
     <lastBuildDate>Sat, 16 Aug 2025 11:47:00 +0800</lastBuildDate>
     
-        <atom:link href="https://kyocius.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://kyocius.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     
         <item>
         <title>修复 uv 管理的 Python 在 Starship 中的显示问题</title>
-        <link>https://kyocius.github.io/posts/2025/2025-08-16-fix-starship/</link>
+        <link>https://kyocius.github.io/blog/posts/2025/2025-08-16-fix-starship/</link>
         <pubDate>Sat, 16 Aug 2025 11:47:00 +0800</pubDate>
         
-        <guid>https://kyocius.github.io/posts/2025/2025-08-16-fix-starship/</guid>
-        <description>游尔港 https://kyocius.github.io/posts/2025/2025-08-16-fix-starship/ -&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+        <guid>https://kyocius.github.io/blog/posts/2025/2025-08-16-fix-starship/</guid>
+        <description>游尔港 https://kyocius.github.io/blog/posts/2025/2025-08-16-fix-starship/ -&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Starship 是一套高颜值 Shell 美化工具&lt;/li&gt;
 &lt;li&gt;uv 是新一代 Python 包管理器，同时还支持安装 Python&lt;/li&gt;
@@ -50,18 +50,18 @@
 &lt;p&gt;需要注意的是，&lt;code&gt;.venv/Scripts/python&lt;/code&gt; 目录只适用于 Windows，如果是 Mac / Linux 应大概是 &lt;code&gt;.venv/bin/python&lt;/code&gt;，需读者自己查证。&lt;/p&gt;
 &lt;h2 id=&#34;修复效果&#34;&gt;修复效果&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;./pin-08-16-2.png&#34; alt=&#34;result&#34;&gt;&lt;/p&gt;
-- https://kyocius.github.io/posts/2025/2025-08-16-fix-starship/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2025/2025-08-16-fix-starship/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>未来的未来：游尔的 2024 年终总结</title>
-        <link>https://kyocius.github.io/posts/2025/2024-wrapping-up/</link>
+        <link>https://kyocius.github.io/blog/posts/2025/2024-wrapping-up/</link>
         <pubDate>Fri, 24 Jan 2025 21:08:00 +0800</pubDate>
         
-        <guid>https://kyocius.github.io/posts/2025/2024-wrapping-up/</guid>
-        <description>游尔港 https://kyocius.github.io/posts/2025/2024-wrapping-up/ -&lt;p&gt;2024 年上半年真的很痛苦。我在学业上屡受打击，加上实验性学院（元班）哭笑不得的培养方案，令我感到前途无比黯淡。有时在肮脏的浴室里，一个人躲在角落的花洒下崩溃大哭。无数次，在深夜的床板上想过退学复读。我知道这很幼稚，但理想的遥不可及，总是容易令人万念俱灰。&lt;/p&gt;
+        <guid>https://kyocius.github.io/blog/posts/2025/2024-wrapping-up/</guid>
+        <description>游尔港 https://kyocius.github.io/blog/posts/2025/2024-wrapping-up/ -&lt;p&gt;2024 年上半年真的很痛苦。我在学业上屡受打击，加上实验性学院（元班）哭笑不得的培养方案，令我感到前途无比黯淡。有时在肮脏的浴室里，一个人躲在角落的花洒下崩溃大哭。无数次，在深夜的床板上想过退学复读。我知道这很幼稚，但理想的遥不可及，总是容易令人万念俱灰。&lt;/p&gt;
 &lt;p&gt;但 2024 年 9 月，我也遇到了上大学以来最幸运的事：我遇到了一个女孩。她接受了我的告白。没有小红书博主说的勾心斗角、暧昧不清。互生情愫的纯真，让两颗心很自然地接近了。&lt;/p&gt;
 &lt;p&gt;并且随着眼界的拓宽，比如更强的 AI Coder 的迸发，也促使我转变思维，思考真正想做什么、该成为什么样的人了。&lt;/p&gt;
 &lt;h2 id=&#34;first-love&#34;&gt;First Love&lt;/h2&gt;
@@ -100,18 +100,18 @@
 &lt;p&gt;心态的影响真的很大。不要被「过去」和「未来」杀死。人在不同环境会遇到不同的机遇。去试试，说不定能抓住呢。&lt;/p&gt;
 &lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
 &lt;p&gt;新年快乐。祝过去的、未来的所有的我和你，未来无限。祝所有我爱的人身体康健。老爷保佑。&lt;/p&gt;
-- https://kyocius.github.io/posts/2025/2024-wrapping-up/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2025/2024-wrapping-up/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>潦草 PKU 区块链备忘录</title>
-        <link>https://kyocius.github.io/posts/2024/pku-blockchain/2024-08-26-pku-btc/</link>
+        <link>https://kyocius.github.io/blog/posts/2024/pku-blockchain/2024-08-26-pku-btc/</link>
         <pubDate>Mon, 26 Aug 2024 14:19:05 +0800</pubDate>
         
-        <guid>https://kyocius.github.io/posts/2024/pku-blockchain/2024-08-26-pku-btc/</guid>
-        <description>游尔港 https://kyocius.github.io/posts/2024/pku-blockchain/2024-08-26-pku-btc/ -&lt;blockquote&gt;
+        <guid>https://kyocius.github.io/blog/posts/2024/pku-blockchain/2024-08-26-pku-btc/</guid>
+        <description>游尔港 https://kyocius.github.io/blog/posts/2024/pku-blockchain/2024-08-26-pku-btc/ -&lt;blockquote&gt;
 &lt;p&gt;不要被学术思维或是程序员思维限制创造力。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&#34;密码学基础&#34;&gt;密码学基础&lt;/h1&gt;
@@ -348,18 +348,18 @@
 &lt;p&gt;比特币发行量固定，但稀缺的东西不适合做货币。优秀的货币要自带通胀的功能。要不然就有人作壁上观，越来越富。&lt;/p&gt;
 &lt;h2 id=&#34;量子计算&#34;&gt;量子计算&lt;/h2&gt;
 &lt;p&gt;量子计算距离实用还很远。而且量子计算的出现其实对传统金融业的影响更大，因为所有传输都会变得不安全。&lt;/p&gt;
-- https://kyocius.github.io/posts/2024/pku-blockchain/2024-08-26-pku-btc/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2024/pku-blockchain/2024-08-26-pku-btc/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>關於 About</title>
-        <link>https://kyocius.github.io/about/</link>
+        <link>https://kyocius.github.io/blog/about/</link>
         <pubDate>Wed, 14 Aug 2024 21:11:31 +0800</pubDate>
         
-        <guid>https://kyocius.github.io/about/</guid>
-        <description>游尔港 https://kyocius.github.io/about/ -&lt;!-- raw HTML omitted --&gt;
+        <guid>https://kyocius.github.io/blog/about/</guid>
+        <description>游尔港 https://kyocius.github.io/blog/about/ -&lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;&lt;img src=&#34;./bg.jpg&#34; alt=&#34;那不勒斯&#34;&gt;&lt;/p&gt;
 &lt;p&gt;在彻底丧失少年意气之前，我想把这些天真的、矫揉造作的文字记录下来，起码能证明曾经有过天马行空，没有沦为无趣的大人。&lt;/p&gt;
@@ -372,18 +372,18 @@
 &lt;p&gt;想去很多城市旅行，但还没能力实现。比如日本的京都和镰仓、意大利的那不勒斯和罗马、巴西的里约热内卢，还有美国的旧金山和迈阿密（对当地的足球俱乐部也很感兴趣）&amp;hellip;&lt;/p&gt;
 &lt;p&gt;自卑、自负，自以为是。表面假装乐观，晚上躲在被窝里焦虑是他常干的事。但好在待人足够真诚。&lt;/p&gt;
 &lt;p&gt;可以通过 &lt;a href=&#34;mailto:kyocius@outlook.com&#34;&gt;kyocius@outlook.com&lt;/a&gt; 联系他，欢迎聊天。&lt;/p&gt;
-- https://kyocius.github.io/about/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/about/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>两只麻雀</title>
-        <link>https://kyocius.github.io/posts/2024/2024-08-03-two-sparrow/</link>
+        <link>https://kyocius.github.io/blog/posts/2024/2024-08-03-two-sparrow/</link>
         <pubDate>Sat, 03 Aug 2024 20:36:00 +0800</pubDate>
         
-        <guid>https://kyocius.github.io/posts/2024/2024-08-03-two-sparrow/</guid>
-        <description>游尔港 https://kyocius.github.io/posts/2024/2024-08-03-two-sparrow/ -&lt;p&gt;走廊尽头，靠近窗户的一隅，是我的房间，
+        <guid>https://kyocius.github.io/blog/posts/2024/2024-08-03-two-sparrow/</guid>
+        <description>游尔港 https://kyocius.github.io/blog/posts/2024/2024-08-03-two-sparrow/ -&lt;p&gt;走廊尽头，靠近窗户的一隅，是我的房间，
 今早不知如何，飞进两只麻雀。&lt;/p&gt;
 &lt;p&gt;一只麻雀仿佛在控诉，不停地撞击玻璃，想飞上镜花水月般的枝丫；
 另一只受到了莫大的惊吓，躲进了洗手台的角落，发出微弱的呢喃。&lt;/p&gt;
@@ -402,18 +402,18 @@
 &lt;p&gt;雨下的很大，伞在风和雨的蹂躏下，显得快要如琴弦绷断一般。我快步走着，被积水浸湿了鞋。&lt;/p&gt;
 &lt;p&gt;一只麻雀找到了离开的路，却倒在了滂沱大雨中。&lt;/p&gt;
 &lt;p&gt;雨一直到傍晚也没有停歇。&lt;/p&gt;
-- https://kyocius.github.io/posts/2024/2024-08-03-two-sparrow/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2024/2024-08-03-two-sparrow/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>2024 夏日谈</title>
-        <link>https://kyocius.github.io/posts/2024/2024-summer-holiday/</link>
+        <link>https://kyocius.github.io/blog/posts/2024/2024-summer-holiday/</link>
         <pubDate>Tue, 25 Jun 2024 00:35:00 +0800</pubDate>
         
-        <guid>https://kyocius.github.io/posts/2024/2024-summer-holiday/</guid>
-        <description>游尔港 https://kyocius.github.io/posts/2024/2024-summer-holiday/ -&lt;h2 id=&#34;6-月-24-日&#34;&gt;6 月 24 日&lt;/h2&gt;
+        <guid>https://kyocius.github.io/blog/posts/2024/2024-summer-holiday/</guid>
+        <description>游尔港 https://kyocius.github.io/blog/posts/2024/2024-summer-holiday/ -&lt;h2 id=&#34;6-月-24-日&#34;&gt;6 月 24 日&lt;/h2&gt;
 &lt;p&gt;推进雅思英语词汇，用的不背单词。还差正好 2000 个。&lt;/p&gt;
 &lt;p&gt;重新学一遍线性代数，用的 &lt;a href=&#34;https://www.bilibili.com/video/BV1ys411472E?p=8&amp;amp;vd_source=761f7d019a0848a165a93faf761026f3&#34;&gt;3B1B 线性代数本质&lt;/a&gt;，看到 8/16，Manim 真是神奇。&lt;/p&gt;
 &lt;p&gt;两个学期下来太狗屎了，没时间好好学，狗屁应试。考前挑着看了经典 MIT 线性代数系列，速通成功。虽然到最后 Jordan 标准型的类型题一半不会写，Hermite 矩阵是啥也忘了，Hamilton-Cayley 定理正好没复习。&lt;/p&gt;
@@ -468,18 +468,18 @@
 &lt;p&gt;投的一份外企实习被约了面试，虽然被 HR 夸简历很有趣，最后我认为还是因为真正的项目经验不足失去了机会。HR 很有礼貌、亚撒西。&lt;/p&gt;
 &lt;p&gt;这次机会还是靠国院学姐内推。国际学院的同学素质普遍更高，果然家境好就是不一样。眼界开阔、谈吐大方，最重要是英语都很不错，不少人都考过雅思托福甚至 A-Level。&lt;/p&gt;
 &lt;p&gt;总之就是继续丰富自己吧。&lt;/p&gt;
-- https://kyocius.github.io/posts/2024/2024-summer-holiday/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2024/2024-summer-holiday/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>近况，困顿与精神符号</title>
-        <link>https://kyocius.github.io/posts/2024/2024-04-02-confusion/</link>
+        <link>https://kyocius.github.io/blog/posts/2024/2024-04-02-confusion/</link>
         <pubDate>Tue, 02 Apr 2024 14:13:00 +0800</pubDate>
         
-        <guid>https://kyocius.github.io/posts/2024/2024-04-02-confusion/</guid>
-        <description>游尔港 https://kyocius.github.io/posts/2024/2024-04-02-confusion/ -&lt;p&gt;大学生活没有想象中美好。形式的、毫无意义的活动和报告，在侵蚀我的热情，虽然我早知会如此。从前那些不以为意的选择和肤浅的见解，在这段时间成为了箍紧我的枷锁。我很不愿意承认自己会因为一些小事大发牢骚，但往往心中裂痕淌出的水滴，会在种种现实的挫伤下，变成决堤的洪流。&lt;/p&gt;
+        <guid>https://kyocius.github.io/blog/posts/2024/2024-04-02-confusion/</guid>
+        <description>游尔港 https://kyocius.github.io/blog/posts/2024/2024-04-02-confusion/ -&lt;p&gt;大学生活没有想象中美好。形式的、毫无意义的活动和报告，在侵蚀我的热情，虽然我早知会如此。从前那些不以为意的选择和肤浅的见解，在这段时间成为了箍紧我的枷锁。我很不愿意承认自己会因为一些小事大发牢骚，但往往心中裂痕淌出的水滴，会在种种现实的挫伤下，变成决堤的洪流。&lt;/p&gt;
 &lt;p&gt;我想，是时候梳理这股无谓的洪流了。&lt;/p&gt;
 &lt;p&gt;上学期挂了学分最高的数学分析，下学期经过补考 GPA 能开出 3.66 但是均分依然很低，说实话我依然在疑惑这个绩点如何换算来的，比预期高很多。但在这所谓的○班里，GPA 比我高的比比皆是。在上大学之前我就拜读过 &lt;a href=&#34;https://survivesjtu.gitbook.io/survivesjtumanual&#34;&gt;《上海交通大学生存手册》&lt;/a&gt;进而得知绩点不应该是大学生活的圭臬，这反而成为了深夜的自我安慰剂，每次摆烂后扎入皮肤，一瞬间「毕竟绩点才不是我所追求的」之类的话随着血液涌上脑海。但事实上我除了在内耗和摸鱼之间反反复复之外，真正学的东西少之又少。&lt;/p&gt;
 &lt;p&gt;如果再往思维的更深处挖去，我发现是我那可怜又可笑的虚荣心。从小到大，自认为素养不低、读书不少，但我那如同木制高台的价值观依然建立在物欲与攀比的淤泥里。人人都想要高绩点，但无非是为了更好的升学，升入更高档次的学府，获得更高档次的工作。但越是跟随这实验班的培养方案学习，我越是觉得自己不是学院想要的那类「数理人才」，名为计算机拔尖班却将 CS 课程推后，也发现了通信没有想象中感兴趣。重视基础学科教育并没有问题，但这好像也阻挠了○班学生出去实习的可能性，毕竟科研和工业界大相径庭。头部的学生依然如鱼得水、潇洒自如，着实令我自惭形秽。&lt;/p&gt;
@@ -490,18 +490,18 @@
 &lt;p&gt;发现自己开始对 Blues 和 Neo R&amp;amp;B 着迷，有时候看着王家卫拍的电影出神。那种朦胧的、梦幻的音乐，抽帧的、缀以暗色的场景，可能正影射着我对当下的印象吧。也许会被旁人骂成赛博文青，但对我来说已毫无所谓。&lt;/p&gt;
 &lt;p&gt;从前我是不相信 MBTI 的，因为人，尤其是人的思维，是无法用简单几十道直白的 quiz 来定义的。我曾把这句话告诉了当时正在追求的女孩，现在想来真是蠢到极致，和自己没有太多共鸣的人聊天，大部分时间都是我在迎合，很累且无益。不过我更加确信了我是一个外表热情乐观洋溢，实则容易阴郁和自弃的人格。我也认定自己虽看惯卑劣和老旧，内心仍不舍浪漫主义。我觉得这会是日后我与众人的不同。&lt;/p&gt;
 &lt;p&gt;言尽于此，祝我的未来无限可能、步入正轨，也祝各位看客生活美满幸福。&lt;/p&gt;
-- https://kyocius.github.io/posts/2024/2024-04-02-confusion/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2024/2024-04-02-confusion/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>笨方法学 C 附加题不完全解答</title>
-        <link>https://kyocius.github.io/posts/2024/chip-design/clang-review/</link>
+        <link>https://kyocius.github.io/blog/posts/2024/chip-design/clang-review/</link>
         <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://kyocius.github.io/posts/2024/chip-design/clang-review/</guid>
-        <description>游尔港 https://kyocius.github.io/posts/2024/chip-design/clang-review/ -&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+        <guid>https://kyocius.github.io/blog/posts/2024/chip-design/clang-review/</guid>
+        <description>游尔港 https://kyocius.github.io/blog/posts/2024/chip-design/clang-review/ -&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;笔者撰写本文时还在上大一，数据结构基础几乎为零，所以会有一些可笑的问题和不合时宜的吐槽。&lt;/p&gt;
 &lt;p&gt;本文尝试解答书后附加题，有的章节太简单就略过了。&lt;/p&gt;
 &lt;h1 id=&#34;练习10字符串数组和循环&#34;&gt;练习10：字符串数组和循环&lt;/h1&gt;
@@ -780,18 +780,18 @@
 &lt;li&gt;研究双向链表的限制。例如，虽然它们对于插入和删除元素很高效，但是对于变量元素比较慢。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;双向链表更改一个节点意味着要修改两端的节点，这太地狱了。&lt;/p&gt;
-- https://kyocius.github.io/posts/2024/chip-design/clang-review/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2024/chip-design/clang-review/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>2023 当我谈论高中时</title>
-        <link>https://kyocius.github.io/posts/2023/memory-graduation-2023/</link>
+        <link>https://kyocius.github.io/blog/posts/2023/memory-graduation-2023/</link>
         <pubDate>Mon, 19 Jun 2023 19:36:00 +0800</pubDate>
         
-        <guid>https://kyocius.github.io/posts/2023/memory-graduation-2023/</guid>
-        <description>游尔港 https://kyocius.github.io/posts/2023/memory-graduation-2023/ -&lt;h2 id=&#34;楔子&#34;&gt;楔子&lt;/h2&gt;
+        <guid>https://kyocius.github.io/blog/posts/2023/memory-graduation-2023/</guid>
+        <description>游尔港 https://kyocius.github.io/blog/posts/2023/memory-graduation-2023/ -&lt;h2 id=&#34;楔子&#34;&gt;楔子&lt;/h2&gt;
 &lt;p&gt;我曾不止一次在傍晚的晚自习课上，倏地意识游离，心思飘渺到了未来。幻想着那场考试后的心情与生活如何如何，幻想着不再受约束时又该时怎样欢欣。&lt;/p&gt;
 &lt;p&gt;但等到真正经历后，却又出乎意料地平静。那些看似熬不到头的日子戛然而止，像是一根突然绷断的琴弦。同学们的欢笑、物理老师的提问，仿佛还流连在昨天，如同校园的秋桐叶飘落在湖边的水面上，漾起卷卷波纹。&lt;/p&gt;
 &lt;p&gt;请原谅我的无病呻吟吧，看在这是一个乳臭未干的小子，头一回经历的份儿上。&lt;/p&gt;
@@ -835,18 +835,18 @@
 &lt;p&gt;润仔给人的印象就是沉默而内向。他皮肤黝黑，身材瘦高。性格温良，总是给人踏实的感觉，老师应该很信任他。&lt;/p&gt;
 &lt;h2 id=&#34;后记&#34;&gt;后记&lt;/h2&gt;
 &lt;p&gt;无论如何，我祝愿我的朋友都幸福美满。也许会有更多挫折等着我。但人总要经历的。乐观也好，悲观也罢，日子会过去。而过去的将再无机会重来。&lt;/p&gt;
-- https://kyocius.github.io/posts/2023/memory-graduation-2023/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2023/memory-graduation-2023/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>写给 C# 开发者的 F# 光速入门指南</title>
-        <link>https://kyocius.github.io/posts/2023/dotnet/fsharp-for-csharp-devs/</link>
+        <link>https://kyocius.github.io/blog/posts/2023/dotnet/fsharp-for-csharp-devs/</link>
         <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://kyocius.github.io/posts/2023/dotnet/fsharp-for-csharp-devs/</guid>
-        <description>游尔港 https://kyocius.github.io/posts/2023/dotnet/fsharp-for-csharp-devs/ -&lt;blockquote&gt;
+        <guid>https://kyocius.github.io/blog/posts/2023/dotnet/fsharp-for-csharp-devs/</guid>
+        <description>游尔港 https://kyocius.github.io/blog/posts/2023/dotnet/fsharp-for-csharp-devs/ -&lt;blockquote&gt;
 &lt;p&gt;本文翻译自托管在 GitHub 上的 &lt;a href=&#34;https://github.com/knocte/2fsharp&#34;&gt;2fsharp&lt;/a&gt; 开源项目&lt;/p&gt;
 &lt;p&gt;译版仅发表在知乎和 &lt;a href=&#34;https://kyocius.github.io&#34;&gt;本人博客&lt;/a&gt; 上，未经授权&lt;strong&gt;禁止转载&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1783,7 +1783,7 @@
 &lt;li&gt;看看这篇 &lt;a href=&#34;https://www.compositional-it.com/news-blog/5-features-that-c-has-that-f-doesnt-have/&#34;&gt;文章&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;如果过了一段时间，你还在为从 C# 转换至 F# 而挣扎，也可以时不时地使用这个 &lt;a href=&#34;https://github.com/willsam100/FShaper&#34;&gt;工具&lt;/a&gt;。&lt;/p&gt;
-- https://kyocius.github.io/posts/2023/dotnet/fsharp-for-csharp-devs/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2023/dotnet/fsharp-for-csharp-devs/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     

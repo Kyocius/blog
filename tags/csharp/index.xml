@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CSharp on 游尔港</title>
-    <link>https://kyocius.github.io/tags/csharp/</link>
+    <link>https://kyocius.github.io/blog/tags/csharp/</link>
     <description>Recent content in CSharp on 游尔港</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Kyocius. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Mon, 15 Aug 2022 12:00:00 +0000</lastBuildDate><atom:link href="https://kyocius.github.io/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Aug 2022 12:00:00 +0000</lastBuildDate><atom:link href="https://kyocius.github.io/blog/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>看看 C# 比较高级的特性</title>
-      <link>https://kyocius.github.io/posts/2023/dotnet/advanced-csharp/</link>
+      <link>https://kyocius.github.io/blog/posts/2023/dotnet/advanced-csharp/</link>
       <pubDate>Mon, 15 Aug 2022 12:00:00 +0000</pubDate>
       
-      <guid>https://kyocius.github.io/posts/2023/dotnet/advanced-csharp/</guid>
+      <guid>https://kyocius.github.io/blog/posts/2023/dotnet/advanced-csharp/</guid>
       <description>前言 就是太久没写异步，有的用法忘了。所以写篇博客回顾一下。
 线程 Thread 虽然在 C# 中 Task 的使用频率远超直接使用线程，但是有关线程的概念还是要复习一下的。
 才不是因为我全忘了
@@ -24,10 +24,10 @@ Thread t = new Thread(Go); t.</description>
     
     <item>
       <title>Rx.NET 响应式编程指北 03 - 深入流的创建</title>
-      <link>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-3/</link>
+      <link>https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-3/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-3/</guid>
+      <guid>https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-3/</guid>
       <description>前言 之前我们见识了 Rx.NET 的基本用法，把 .NET 事件转化成了可观察数据流，并且补充了一些拓展知识（Ex），现在我们要接着深入 Rx.NET 的核心技术了。
 普通数据流 还记得吗，IObservable 接口只有一个方法 Subscribe，是 Rx.NET 的基础。
 我们将试着打造一个即时通讯系统。
@@ -37,10 +37,10 @@ using System; using System.Reactive.Disposables; public class NumbersObservable 
     
     <item>
       <title>Rx.NET 响应式编程指北 Ex - 函数式 &amp; 流式接口</title>
-      <link>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-ex/</link>
+      <link>https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-ex/</link>
       <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-ex/</guid>
+      <guid>https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-ex/</guid>
       <description>前言 这一章是独立于正式章节的番外，补充一下 C# 函数式编程（Functional Programming）以及流式接口（Fluent API）的知识。
 等等，我们不是在学 Rx.NET 吗，怎么又跑到函数式了？ (＃°Д°)
 你 先 别 急，二者并不冲突。
@@ -56,20 +56,20 @@ MyDelegateType myDel; myDel += &amp;lt;一些函数&amp;gt;; myDel(&amp;#34;firs
     
     <item>
       <title>Rx.NET 响应式编程指北 02 - 基本使用</title>
-      <link>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-2/</link>
+      <link>https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-2/</link>
       <pubDate>Mon, 08 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-2/</guid>
+      <guid>https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-2/</guid>
       <description>前言 在上一章里，我们学习了响应式的基本概念。在这一章节，我们将编写一个股票监控程序。首先我们将使用传统的 .NET 事件系统来写一次，之后再通过 Rx 来重构。
 传统事件写法 先编写一个类，其中只有一个事件属性： class StockTicker { public event EventHandler&amp;lt;StockTick&amp;gt; StockTick; } 编写一个类包含我们的数据： class StockTick { public string QuoteSymbol { get; set; } public decimal Price { get; set; } } 创建一个类来监听变化，并订阅事件： class StockMonitor { public StockMonitor(StockTicker ticker) { ticker.StockTick += OnStockTick; // OnStockTick 注册事件 } ... } 因为我们需要比较股票价格的变化，所以我们可以通过字典来存储先前的股票数据。编写一个新类： class StockInfo { public StockInfo(string symbol, decimal price) { Symbol = symbol; PrevPrice = price; } public string Symbol { get; set; } public decimal PrevPrice { get; set; } } 之后你可以在 StockMonitor 中声明一个 StockInfo 类型的属性。</description>
     </item>
     
     <item>
       <title>Rx.NET 响应式编程指北 01 - 基础概念</title>
-      <link>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-1/</link>
+      <link>https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-1/</link>
       <pubDate>Sun, 07 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kyocius.github.io/posts/2023/dotnet/reactive/rx-magic-1/</guid>
+      <guid>https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-1/</guid>
       <description>前言 最近刚读了 Rx.NET in Action，学到的新概念非常多，担忧自己会日渐遗忘，觉得有必要写一篇博客记录一下，说不定也能帮到一些志同道合的朋友。
 本系列将会使用我深爱的 C# 语言和 Rx.NET 框架来讲解响应式编程（Reactive Programming）的魔法 ╰(°▽°)╯
 背景知识 C# 中的委托、泛型、事件以及 LINQ 等概念 Rx = Reactive Extension Rx 是由微软旗下一个实验室发起的 巨硬大法好 响应式概念 Rx 到底是干啥的？
