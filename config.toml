@@ -1,4 +1,4 @@
-baseURL = "https://kyocius.github.io/"
+baseURL = "https://kyocius.github.io/blog"
 DefaultContentLanguage = "zh-hant" # Theme's display language, supports: en, fr, zh, zh-hant
 languageCode = "zh"
 title = "游尔港"
@@ -49,7 +49,7 @@ theme="github-light"
 
 # Please visit https://giscus.app/ to generate settings.
 [params.giscus]
-    data_repo="Kyocius/kyocius.github.io"
+    data_repo="Kyocius/blog"
     data_repo_id="MDEwOlJlcG9zaXRvcnkyODE4MDgxOTA="    
     data_category="Announcements"
     data_category_id="DIC_kwDOEMwNPs4CXHLA"
