@@ -2,7 +2,7 @@ baseURL = "https://kyocius.github.io/blog"
 DefaultContentLanguage = "zh-hant" # Theme's display language, supports: en, fr, zh, zh-hant
 languageCode = "zh"
 title = "游尔港"
-copyright = "Kyocius. 本站遵循 CC-BY-NC 4.0 协议"
+copyright = "CC-BY-NC 4.0 Kyocius"
 theme = "diary"
 # googleAnalytics = "UA-123-45"
 
@@ -20,6 +20,7 @@ theme = "diary"
 
 [params]
 subtitle = "The Mind Port"
+favicon = "favicon.ico"
 enableGitalk = false
 enableGiscus = true
 
