@@ -6,7 +6,7 @@
     <description>Recent content on 游尔港</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <copyright>Kyocius. 本站遵循 CC-BY-NC 4.0 协议</copyright>
+    <copyright>CC-BY-NC 4.0 Kyocius</copyright>
     <lastBuildDate>Sat, 16 Aug 2025 11:47:00 +0800</lastBuildDate>
     
         <atom:link href="https://kyocius.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
@@ -548,7 +548,7 @@
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;并行-parallelism&#34;&gt;并行 Parallelism&lt;/h4&gt;
-- https://kyocius.github.io/blog/posts/2023/dotnet/advanced-csharp/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2023/dotnet/advanced-csharp/ - CC-BY-NC 4.0 Kyocius</description>
         </item>
     
     
@@ -1044,7 +1044,7 @@ Return - OnCompleted()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    .SubscribeConsole(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;Empty&amp;#34;&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;输出：&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Empty - OnCompleted()
-&lt;/code&gt;&lt;/pre&gt;- https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-3/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+&lt;/code&gt;&lt;/pre&gt;- https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-3/ - CC-BY-NC 4.0 Kyocius</description>
         </item>
     
     
@@ -1209,7 +1209,7 @@ Return - OnCompleted()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     .AddItem(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;Feels&amp;#34;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     .AddItem(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;Weird&amp;#34;&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Awesome！瞬间就简洁多了。&lt;/p&gt;
-- https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-ex/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-ex/ - CC-BY-NC 4.0 Kyocius</description>
         </item>
     
     
@@ -1481,7 +1481,7 @@ Stock:MSFT has changed with 0.15 ratio, Old Price:170 New Price:195.5
 &lt;p&gt;更简单地同步：一个 &lt;code&gt;Synchronize&lt;/code&gt; 方法足矣&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-- https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-2/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-2/ - CC-BY-NC 4.0 Kyocius</description>
         </item>
     
     
@@ -1560,7 +1560,7 @@ Stock:MSFT has changed with 0.15 ratio, Old Price:170 New Price:195.5
 &lt;/blockquote&gt;
 &lt;p&gt;上面这段 Quote 来自 &lt;em&gt;Rx.NET in Action&lt;/em&gt;，大致的意思就是数据就像水管子一样，我们通过操作符过滤水流，最后通过喷头将水流传播。&lt;/p&gt;
 &lt;p&gt;我认为这是响应式的核心概念。只要你想持续地监听某数据的变化，那么使用 Rx 让数据变成可观察流，绝对是个好主意。&lt;/p&gt;
-- https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-1/ - Kyocius. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://kyocius.github.io/blog/posts/2023/dotnet/reactive/rx-magic-1/ - CC-BY-NC 4.0 Kyocius</description>
         </item>
     
     
